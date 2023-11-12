@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "705392734625",
+    "project_id": "test1-53665",
+    "storage_bucket": "test1-53665.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705392734625:android:12222cee2cce2d9912dbe0",
+        "android_client_info": {
+          "package_name": "com.asport.jokenall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3ZC5_vT16WwJOuUx-b23n0a1yMW-sRd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

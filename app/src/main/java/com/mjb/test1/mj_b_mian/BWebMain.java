@@ -92,7 +92,7 @@ public class BWebMain extends Activity {
 
         webView.loadUrl(loadUrl);
         setContentView(webView);
-        AppsFlyerLibUtil.init(this);
+     ///////////   AppsFlyerLibUtil.init(this);
 
     }
 

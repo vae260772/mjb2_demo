@@ -12,7 +12,7 @@
         android:theme="@style/MainTheme">
 
         <activity
-            android:name=".SplashActivity"
+            android:name="com.classical.mora.game.diy.ButtonLongActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

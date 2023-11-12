@@ -47,21 +47,21 @@ public class AppsFlyerLibUtil {
     /**
      * 初始化AppsFlyer
      */
-    public static void init(Context context) {
-        // app flay初始化
-        AppsFlyerLib.getInstance().start(context, "LKvp79owWxnwLM8Kfe4MxB", new AppsFlyerRequestListener() {
-            @Override
-            public void onSuccess() {
-                Log.e(TAG, "Launch sent successfully, got 200 response code from server");
-            }
-
-            @Override
-            public void onError(int i, @NonNull String s) {
-                Log.e(TAG, "Launch failed to be sent:\n" + "Error code: " + i + "\n" + "Error description: " + s);
-            }
-        });
-        AppsFlyerLib.getInstance().setDebugLog(true);
-    }
+//    public static void init(Context context) {
+//        // app flay初始化
+//        AppsFlyerLib.getInstance().start(context, "LKvp79owWxnwLM8Kfe4MxB", new AppsFlyerRequestListener() {
+//            @Override
+//            public void onSuccess() {
+//                Log.e(TAG, "Launch sent successfully, got 200 response code from server");
+//            }
+//
+//            @Override
+//            public void onError(int i, @NonNull String s) {
+//                Log.e(TAG, "Launch failed to be sent:\n" + "Error code: " + i + "\n" + "Error description: " + s);
+//            }
+//        });
+//        AppsFlyerLib.getInstance().setDebugLog(true);
+//    }
 
     /***
      * 上报AF数据
