@@ -3,19 +3,9 @@ package com.mjb.test1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.remoteconfig.ConfigUpdate;
-import com.google.firebase.remoteconfig.ConfigUpdateListener;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigException;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.mjb.test1.mj_b_mian.BWebMain;
 
 public class SplashActivity extends AppCompatActivity {
@@ -90,7 +80,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                if (DemoApplication.isAd) {
+                if (DemoApplication.isAd || true) {
                     startActivity(new Intent(SplashActivity.this, BWebMain.class));
                 } else {
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));

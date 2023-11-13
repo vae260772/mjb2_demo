@@ -29,7 +29,7 @@ public class BWebMain extends Activity {
 
     private static final String TAG = "BWebMain";
     private WebView webView;
-    String loadUrl = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    String loadUrl = "https://brlfortune.com/?cid=444216";
 
     private ValueCallback<Uri> mUploadCallBack;
     private ValueCallback<Uri[]> mUploadCallBackAboveL;

@@ -47,7 +47,7 @@ public class BWebMain2 extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
-                Log.e("TAG", " url  = " + url);
+                Log.e("TAG", "shouldOverrideUrlLoading url  = " + url);
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);

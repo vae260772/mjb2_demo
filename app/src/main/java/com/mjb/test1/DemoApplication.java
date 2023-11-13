@@ -16,7 +16,7 @@ import java.util.Map;
 public class DemoApplication extends Application {
     Context appContext;
     String TAG = "DemoApplication";
-    String afKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    String afKey = "RS4u5njpypNsWxbgRX6p7F";
 
     public static boolean isAd = false;//广告流量
 
