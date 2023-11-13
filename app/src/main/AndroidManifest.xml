@@ -20,25 +20,25 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.classical.mora.game.diy.ButtonLongActivity">
+        <activity android:name=".ButtonLongActivity">
 
         </activity>
 
 
         <activity
-            android:name=".MainActivity"
+            android:name=".GuideViewPagerActivity"
             android:exported="false"></activity>
 
 
         <activity
-            android:name=".mj_b_mian.BWebMain"
+            android:name=".BWebMain"
             android:exported="false">
 
         </activity>
 
 
         <activity
-            android:name=".mj_b_mian.BWebMain2"
+            android:name=".BWebMain2"
             android:exported="false">
 
         </activity>

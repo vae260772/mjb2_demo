@@ -1,4 +1,4 @@
-package com.mjb.test1.mj_b_mian;
+package com.ashdot.safeount;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
