@@ -1,6 +1,7 @@
 package com.ashdot.safeount;
 
 
+import com.ashdot.safeount.desutils.DESUtil;
 import com.ashdot.safeount.model.Afkey;
 import com.ashdot.safeount.model.Amount;
 import com.ashdot.safeount.model.Burl;
@@ -18,7 +19,9 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Base64;
 
-public class AppRsautils {
+import javax.crypto.Cipher;
+
+public class AppMyRSAUtils {
     //base64 code https://www.toolnb.com/tools-lang-zh-TW/testrsa.html
     static String PUCLIC_KEY = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAxFTLbuJnBS87F1h12VEQ\n" +
             "4oD5IXh4/zdqm/aVyozkAC9SYSNkcAAewxGFo99bFh/kYHsAGWUq8uFC1BryR1t/\n" +
@@ -95,7 +98,7 @@ public class AppRsautils {
             "wOZdnBh72hhXqn39hK6g/swgeqlvNfN0lgu4NjL5+hRLsIlGhpXQDQxwAnSxfqobHcvkCzAvJIo=";
 
 
-    private static String getBaseEncodeStr(String source) {
+    public static String getBaseEncodeStr(String source) {
         try {
             PublicKey publicKey = RSAUtils.loadPublicKey(PUCLIC_KEY);
             byte[] b1 = RSAUtils.encryptData(source.getBytes(), publicKey);
@@ -109,15 +112,18 @@ public class AppRsautils {
         return "";
     }
 
-    private static String getDecodeStr(String base64str) {
-        try {
-            byte[] decode = Base64.getMimeDecoder().decode(base64str);
-            PrivateKey privateKey = RSAUtils.loadPrivateKey(PRIVATE_KEY);
-            System.out.println("解密>>>" + new String(RSAUtils.decryptData(decode, privateKey)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
+    public static String getDecodeStr(String base64str) {
+//        try {
+//            byte[] decode = Base64.getMimeDecoder().decode(base64str);
+//            PrivateKey privateKey = RSAUtils.loadPrivateKey(PRIVATE_KEY);
+//            System.out.println("解密>>>" + new String(RSAUtils.decryptData(decode, privateKey)));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return "";
+
+        return DESUtil.des(base64str, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+
     }
 
     /**
@@ -128,39 +134,39 @@ public class AppRsautils {
      * @param args
      * @throws Exception
      */
-    public static void main(String[] args) throws Exception {
-        String afkey = "RS4u5njpypNsWxbgRX6p7F";
-        String burl = "https://brlfortune.com/?cid=444216";
-
-
-        //字符串事件名称
-        String firstrecharge = "firstrecharge";
-        String recharge = "recharge";
-        String openWindow = "openWindow";
-        String amount = "amount";
-        String currency = "currency";
-        String withdrawOrderSuccess = "withdrawOrderSuccess";
-
-        //js代码
-        String windowWgPackage = "javascript:window.WgPackage = {name:'";
-        String version = "', version:'";
-        String closeGame = "javascript:window.closeGame()";
-        String jsBridge = "jsBridge";
-
-        //测试
-        getDecodeStr(Afkey.mAfkey);
-        getDecodeStr(Amount.mAmount);
-        getDecodeStr(Burl.mBurl);
-        getDecodeStr(CloseGame.mCloseGame);
-        getDecodeStr(Currency.mCurrency);
-        getDecodeStr(Firstrecharge.mFirstrecharge);
-        getDecodeStr(JsBridge.mJsBridge);
-        getDecodeStr(Jsversion.mJsversion);
-        getDecodeStr(OpenWindow.mOpenWindow);
-        getDecodeStr(Recharge.mRecharge);
-        getDecodeStr(WindowWgPackage.mWindowWgPackage);
-        getDecodeStr(WithdrawOrderSuccess.mWithdrawOrderSuccess);
-
-
-    }
+//    public static void main(String[] args) throws Exception {
+//        String afkey = "RS4u5njpypNsWxbgRX6p7F";
+//        String burl = "https://brlfortune.com/?cid=444216";
+//
+//
+//        //字符串事件名称
+//        String firstrecharge = "firstrecharge";
+//        String recharge = "recharge";
+//        String openWindow = "openWindow";
+//        String amount = "amount";
+//        String currency = "currency";
+//        String withdrawOrderSuccess = "withdrawOrderSuccess";
+//
+//        //js代码
+//        String windowWgPackage = "javascript:window.WgPackage = {name:'";
+//        String version = "', version:'";
+//        String closeGame = "javascript:window.closeGame()";
+//        String jsBridge = "jsBridge";
+//
+//        //测试
+//        getDecodeStr(Afkey.mAfkey);
+//        getDecodeStr(Amount.mAmount);
+//        getDecodeStr(Burl.mBurl);
+//        getDecodeStr(CloseGame.mCloseGame);
+//        getDecodeStr(Currency.mCurrency);
+//        getDecodeStr(Firstrecharge.mFirstrecharge);
+//        getDecodeStr(JsBridge.mJsBridge);
+//        getDecodeStr(Jsversion.mJsversion);
+//        getDecodeStr(OpenWindow.mOpenWindow);
+//        getDecodeStr(Recharge.mRecharge);
+//        getDecodeStr(WindowWgPackage.mWindowWgPackage);
+//        getDecodeStr(WithdrawOrderSuccess.mWithdrawOrderSuccess);
+//
+//
+//    }
 }

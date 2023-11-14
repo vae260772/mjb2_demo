@@ -18,3 +18,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "mjb2_project"
 include ':app'
+include ':mylibrary'

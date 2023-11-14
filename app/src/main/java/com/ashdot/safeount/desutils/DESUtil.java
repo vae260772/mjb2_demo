@@ -1,3 +1,4 @@
+package com.ashdot.safeount.desutils;
 /*
  * Copyright 2017 GcsSloop
  *
@@ -20,9 +21,14 @@
  * WebSite: http://www.gcssloop.com
  */
 
-package com.gcssloop.encrypt.symmetric;
+import static com.ashdot.safeount.desutils.BaseUtils.parseByte2HexStr;
+import static com.ashdot.safeount.desutils.BaseUtils.parseHexStr2Byte;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
+
+import androidx.annotation.IntDef;
+
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -36,17 +42,13 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
-import static com.gcssloop.encrypt.base.BaseUtils.parseByte2HexStr;
-import static com.gcssloop.encrypt.base.BaseUtils.parseHexStr2Byte;
-
-import androidx.annotation.IntDef;
-
 /**
  * DES 工具类
  */
 public class DESUtil {
     @IntDef({Cipher.ENCRYPT_MODE, Cipher.DECRYPT_MODE})
-    @interface DESType {}
+    @interface DESType {
+    }
 
     /**
      * Des加密/解密
@@ -66,14 +68,19 @@ public class DESUtil {
 
             if (type == Cipher.ENCRYPT_MODE) {
                 byte[] byteContent = content.getBytes("utf-8");
-                return parseByte2HexStr(cipher.doFinal(byteContent));
+                String a = parseByte2HexStr(cipher.doFinal(byteContent));
+                Log.d("aaa", content + ",加密>>>" + a);
+                return a;
             } else {
                 byte[] byteContent = parseHexStr2Byte(content);
-                return new String(cipher.doFinal(byteContent));
+                String b = new String(cipher.doFinal(byteContent));
+                Log.d("aaa", content + ",解密>>>" + b);
+
+                return b;
             }
         } catch (NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException |
-                UnsupportedEncodingException | InvalidKeyException | NoSuchPaddingException |
-                InvalidKeySpecException e) {
+                 UnsupportedEncodingException | InvalidKeyException | NoSuchPaddingException |
+                 InvalidKeySpecException e) {
             e.printStackTrace();
         }
         return null;

@@ -3,11 +3,18 @@ package com.ashdot.safeount;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.appsflyer.AFInAppEventParameterName;
 import com.appsflyer.AppsFlyerLib;
+import com.ashdot.safeount.model.Amount;
+import com.ashdot.safeount.model.Currency;
+import com.ashdot.safeount.model.Firstrecharge;
+import com.ashdot.safeount.model.OpenWindow;
+import com.ashdot.safeount.model.Recharge;
+import com.ashdot.safeount.model.WithdrawOrderSuccess;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,26 +44,13 @@ import java.util.Map;
  * 取款: {\"amount\":\"104\",\"currency\":\"PHP\",\"success\":1}
  */
 public class AppsFlyerLibUtil {
-    private static final String TAG = "AppsFlyerLibUtil";
+    private static String openWindow = AppMyRSAUtils.getDecodeStr(OpenWindow.mOpenWindow);
+    private static String firstrecharge = AppMyRSAUtils.getDecodeStr(Firstrecharge.mFirstrecharge);
+    private static String recharge = AppMyRSAUtils.getDecodeStr(Recharge.mRecharge);
+    private static String amount = AppMyRSAUtils.getDecodeStr(Amount.mAmount);
+    private static String currency = AppMyRSAUtils.getDecodeStr(Currency.mCurrency);
 
-    /**
-     * 初始化AppsFlyer
-     */
-//    public static void init(Context context) {
-//        // app flay初始化
-//        AppsFlyerLib.getInstance().start(context, "LKvp79owWxnwLM8Kfe4MxB", new AppsFlyerRequestListener() {
-//            @Override
-//            public void onSuccess() {
-//                Log.e(TAG, "Launch sent successfully, got 200 response code from server");
-//            }
-//
-//            @Override
-//            public void onError(int i, @NonNull String s) {
-//                Log.e(TAG, "Launch failed to be sent:\n" + "Error code: " + i + "\n" + "Error description: " + s);
-//            }
-//        });
-//        AppsFlyerLib.getInstance().setDebugLog(true);
-//    }
+    private static String withdrawOrderSuccess = AppMyRSAUtils.getDecodeStr(WithdrawOrderSuccess.mWithdrawOrderSuccess);
 
     /***
      * 上报AF数据
@@ -66,31 +60,31 @@ public class AppsFlyerLibUtil {
         /***
          * 开启新窗口跳转
          */
-        if ("openWindow".equals(name)) {
+        if (openWindow.equals(name)) {
             Intent intent = new Intent(context, SLOTOTERRABMain2.class);
-            intent.putExtra("url", data);
+            intent.putExtra("SLOTOTERRABMain2_url", data);
             context.startActivityForResult(intent, 1);
-        } else if ("firstrecharge".equals(name) || "recharge".equals(name)) {
+        } else if (firstrecharge.equals(name) || recharge.equals(name)) {
             try {
                 Map maps = (Map) JSON.parse(data);
                 for (Object map : maps.entrySet()) {
                     String key = ((Map.Entry) map).getKey().toString();
-                    if ("amount".equals(key)) {
+                    if (amount.equals(key)) {
                         eventValue.put(AFInAppEventParameterName.REVENUE, ((Map.Entry) map).getValue());
-                    } else if ("currency".equals(key)) {
+                    } else if (currency.equals(key)) {
                         eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
                     }
                 }
             } catch (Exception e) {
 
             }
-        } else if ("withdrawOrderSuccess".equals(name)) {
+        } else if (withdrawOrderSuccess.equals(name)) {
             // 提现成功
             try {
                 Map maps = (Map) JSON.parse(data);
                 for (Object map : maps.entrySet()) {
                     String key = ((Map.Entry) map).getKey().toString();
-                    if ("amount".equals(key)) {
+                    if (amount.equals(key)) {
                         float revenue = 0;
                         String value = ((Map.Entry) map).getValue().toString();
                         if (!TextUtils.isEmpty(value)) {
@@ -99,17 +93,20 @@ public class AppsFlyerLibUtil {
                         }
                         eventValue.put(AFInAppEventParameterName.REVENUE, revenue);
 
-                    } else if ("currency".equals(key)) {
+                    } else if (currency.equals(key)) {
                         eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
                     }
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         } else {
             eventValue.put(name, data);
         }
         AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
+
+        Log.d("event", "name=" + name);
+        Log.d("event", "eventValue=" + eventValue);
 
         Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
     }

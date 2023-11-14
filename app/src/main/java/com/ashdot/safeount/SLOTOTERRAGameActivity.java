@@ -13,10 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.Random;
 
 /* loaded from: classes.dex */
-public class ButtonLongActivity extends Activity {
+public class SLOTOTERRAGameActivity extends Activity {
     private RelativeLayout dj1;
     private LinearLayout dj2;
     private TextView fs;
@@ -39,9 +40,9 @@ public class ButtonLongActivity extends Activity {
     Runnable runnable = new Runnable() { // from class: com.classical.mora.game.diy.ButtonLongActivity.1
         @Override // java.lang.Runnable
         public void run() {
-            while (ButtonLongActivity.this.sumTime >= 100) {
-                ButtonLongActivity.this.handle.sendEmptyMessage(11);
-                ButtonLongActivity.this.sumTime -= 100;
+            while (SLOTOTERRAGameActivity.this.sumTime >= 100) {
+                SLOTOTERRAGameActivity.this.handle.sendEmptyMessage(11);
+                SLOTOTERRAGameActivity.this.sumTime -= 100;
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -53,17 +54,17 @@ public class ButtonLongActivity extends Activity {
     Runnable game = new Runnable() { // from class: com.classical.mora.game.diy.ButtonLongActivity.2
         @Override // java.lang.Runnable
         public void run() {
-            if (ButtonLongActivity.this.sumTime > 100) {
-                while (ButtonLongActivity.this.gameTime >= 50) {
-                    ButtonLongActivity.this.handle.sendEmptyMessage(12);
+            if (SLOTOTERRAGameActivity.this.sumTime > 100) {
+                while (SLOTOTERRAGameActivity.this.gameTime >= 50) {
+                    SLOTOTERRAGameActivity.this.handle.sendEmptyMessage(12);
                     try {
                         Thread.sleep(50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    ButtonLongActivity.this.gameTime -= 50;
+                    SLOTOTERRAGameActivity.this.gameTime -= 50;
                 }
-                ButtonLongActivity.this.beginTime = System.currentTimeMillis();
+                SLOTOTERRAGameActivity.this.beginTime = System.currentTimeMillis();
             }
         }
     };
@@ -72,7 +73,7 @@ public class ButtonLongActivity extends Activity {
         public void run() {
             try {
                 Thread.sleep(800);
-                ButtonLongActivity.this.handle.sendEmptyMessage(13);
+                SLOTOTERRAGameActivity.this.handle.sendEmptyMessage(13);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -84,19 +85,19 @@ public class ButtonLongActivity extends Activity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    ButtonLongActivity.this.kaishi();
+                    SLOTOTERRAGameActivity.this.kaishi();
                     return;
                 case 1:
-                    ButtonLongActivity.this.img.setBackgroundResource(R.drawable.s1);
+                    SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.s1);
                     return;
                 case 2:
-                    ButtonLongActivity.this.img.setBackgroundResource(R.drawable.s1);
+                    SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.s1);
                     return;
                 case 3:
-                    ButtonLongActivity.this.img.setBackgroundResource(R.drawable.s2);
+                    SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.s2);
                     return;
                 case 4:
-                    ButtonLongActivity.this.img.setBackgroundResource(R.drawable.s3);
+                    SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.s3);
                     return;
                 case 5:
                 case 6:
@@ -107,34 +108,34 @@ public class ButtonLongActivity extends Activity {
                 default:
                     return;
                 case 11:
-                    if (ButtonLongActivity.this.sumTime != 0) {
-                        ButtonLongActivity.this.sj.setText((ButtonLongActivity.this.sumTime / 1000) + "." + ((ButtonLongActivity.this.sumTime % 1000) / 10) + " s");
+                    if (SLOTOTERRAGameActivity.this.sumTime != 0) {
+                        SLOTOTERRAGameActivity.this.sj.setText((SLOTOTERRAGameActivity.this.sumTime / 1000) + "." + ((SLOTOTERRAGameActivity.this.sumTime % 1000) / 10) + " s");
                         return;
                     }
-                    ButtonLongActivity.this.sj.setText("time over");
-                    ButtonLongActivity.this.l1.setVisibility(View.GONE);
-                    ButtonLongActivity.this.l2.setVisibility(View.VISIBLE);
-                    if (25 <= ButtonLongActivity.this.mark) {
-                        ButtonLongActivity.this.img.setBackgroundResource(R.drawable.a);
-                    } else if (20 <= ButtonLongActivity.this.mark && ButtonLongActivity.this.mark < 25) {
-                        ButtonLongActivity.this.img.setBackgroundResource(R.drawable.b);
-                    } else if (15 <= ButtonLongActivity.this.mark && ButtonLongActivity.this.mark < 20) {
-                        ButtonLongActivity.this.img.setBackgroundResource(R.drawable.c);
-                    } else if (10 <= ButtonLongActivity.this.mark && ButtonLongActivity.this.mark < 15) {
-                        ButtonLongActivity.this.img.setBackgroundResource(R.drawable.d);
-                    } else if (5 <= ButtonLongActivity.this.mark && ButtonLongActivity.this.mark < 10) {
-                        ButtonLongActivity.this.img.setBackgroundResource(R.drawable.e);
-                    } else if (ButtonLongActivity.this.mark < 5) {
-                        ButtonLongActivity.this.img.setBackgroundResource(R.drawable.f);
+                    SLOTOTERRAGameActivity.this.sj.setText("time over");
+                    SLOTOTERRAGameActivity.this.l1.setVisibility(View.GONE);
+                    SLOTOTERRAGameActivity.this.l2.setVisibility(View.VISIBLE);
+                    if (25 <= SLOTOTERRAGameActivity.this.mark) {
+                        SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.a);
+                    } else if (20 <= SLOTOTERRAGameActivity.this.mark && SLOTOTERRAGameActivity.this.mark < 25) {
+                        SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.b);
+                    } else if (15 <= SLOTOTERRAGameActivity.this.mark && SLOTOTERRAGameActivity.this.mark < 20) {
+                        SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.c);
+                    } else if (10 <= SLOTOTERRAGameActivity.this.mark && SLOTOTERRAGameActivity.this.mark < 15) {
+                        SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.d);
+                    } else if (5 <= SLOTOTERRAGameActivity.this.mark && SLOTOTERRAGameActivity.this.mark < 10) {
+                        SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.e);
+                    } else if (SLOTOTERRAGameActivity.this.mark < 5) {
+                        SLOTOTERRAGameActivity.this.img.setBackgroundResource(R.drawable.f);
                     }
-                    ButtonLongActivity.this.dj2.setVisibility(View.VISIBLE);
-                    ButtonLongActivity.this.dj1.setVisibility(View.GONE);
+                    SLOTOTERRAGameActivity.this.dj2.setVisibility(View.VISIBLE);
+                    SLOTOTERRAGameActivity.this.dj1.setVisibility(View.GONE);
                     return;
                 case 12:
-                    ButtonLongActivity.this.changeImg();
+                    SLOTOTERRAGameActivity.this.changeImg();
                     return;
                 case 13:
-                    ButtonLongActivity.this.markImg.setVisibility(View.GONE);
+                    SLOTOTERRAGameActivity.this.markImg.setVisibility(View.GONE);
                     return;
             }
         }
@@ -143,7 +144,7 @@ public class ButtonLongActivity extends Activity {
         @Override // java.lang.Runnable
         public void run() {
             for (int i = 4; i >= 0; i--) {
-                ButtonLongActivity.this.handle.sendEmptyMessage(i);
+                SLOTOTERRAGameActivity.this.handle.sendEmptyMessage(i);
                 if (i != 0) {
                     try {
                         Thread.sleep(1000);
@@ -299,7 +300,7 @@ public class ButtonLongActivity extends Activity {
     public void restart(View v) {
         this.dj2.setVisibility(View.GONE);
         new Thread(this.re).start();
-        this.sumTime = 30000;
+        this.sumTime = 10000;
         this.mark = 0;
         this.fs.setText("scores : " + this.mark);
     }

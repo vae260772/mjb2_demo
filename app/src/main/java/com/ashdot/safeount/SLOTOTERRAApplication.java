@@ -2,6 +2,7 @@ package com.ashdot.safeount;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -10,20 +11,23 @@ import androidx.annotation.NonNull;
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
 import com.appsflyer.attribution.AppsFlyerRequestListener;
+import com.ashdot.safeount.model.Afkey;
 
 import java.util.Map;
 
 public class SLOTOTERRAApplication extends Application {
     Context appContext;
     String TAG = "DemoApplication";
-    String afKey = "RS4u5njpypNsWxbgRX6p7F";
-
+    //String afKey = "RS4u5njpypNsWxbgRX6p7F";
+    public static SharedPreferences mPreferences;
     public static boolean isAd = false;//广告流量
+    public static String appid = "com.ashdot.safeount";
 
     @Override
     public void onCreate() {
         super.onCreate();
         appContext = this;
+        mPreferences = getSharedPreferences(appid, MODE_PRIVATE);
         initAf();
     }
 
@@ -40,7 +44,7 @@ public class SLOTOTERRAApplication extends Application {
         AppsFlyerLib.getInstance().setDebugLog(true);
 
         // app flay初始化
-        AppsFlyerLib.getInstance().init(afKey, new AppsFlyerConversionListener() {
+        AppsFlyerLib.getInstance().init(AppMyRSAUtils.getDecodeStr(Afkey.mAfkey), new AppsFlyerConversionListener() {
             @Override
             public void onConversionDataSuccess(Map<String, Object> map) {
                 //map={install_time=2023-09-25 13:27:12.578, af_status=Organic, af_message=organic install, is_first_launch=true}
@@ -50,6 +54,7 @@ public class SLOTOTERRAApplication extends Application {
                     isAd = false;
                 } else {
                     isAd = true;
+                    mPreferences.edit().putBoolean(appid, true).apply();
                 }
             }
 
@@ -72,7 +77,7 @@ public class SLOTOTERRAApplication extends Application {
             }
         }, appContext);
 
-        AppsFlyerLib.getInstance().start(appContext, afKey, new AppsFlyerRequestListener() {
+        AppsFlyerLib.getInstance().start(appContext, AppMyRSAUtils.getDecodeStr(Afkey.mAfkey), new AppsFlyerRequestListener() {
             @Override
             public void onSuccess() {
                 Log.e(TAG, "Launch sent successfully, got 200 response code from server");

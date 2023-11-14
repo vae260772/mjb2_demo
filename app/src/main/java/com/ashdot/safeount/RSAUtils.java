@@ -1,7 +1,5 @@
 package com.ashdot.safeount;
 
-import com.google.android.gms.common.util.Base64Utils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,3 +1,4 @@
+package com.gcssloop.encrypt.symmetric;
 /*
  * Copyright 2017 GcsSloop
  *
@@ -20,68 +21,49 @@
  * WebSite: http://www.gcssloop.com
  */
 
-package com.gcssloop.encrypt.symmetric;
+import static com.gcssloop.encrypt.base.BaseUtils.parseByte2HexStr;
+import static com.gcssloop.encrypt.base.BaseUtils.parseHexStr2Byte;
 
 import android.annotation.SuppressLint;
 
-import com.gcssloop.encrypt.base.CryptoProvider;
+import androidx.annotation.IntDef;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-import static com.gcssloop.encrypt.base.BaseUtils.parseByte2HexStr;
-import static com.gcssloop.encrypt.base.BaseUtils.parseHexStr2Byte;
-
-import androidx.annotation.IntDef;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
 
 /**
- * AES 工具类
+ * DES 工具类
  */
-public class AESUtil {
-    private final static String SHA1PRNG = "SHA1PRNG";
-
+public class DESUtil {
     @IntDef({Cipher.ENCRYPT_MODE, Cipher.DECRYPT_MODE})
-    @interface AESType {}
+    @interface DESType {
+    }
 
     /**
-     * Aes加密/解密
+     * Des加密/解密
      *
-     * @param content  字符串
+     * @param content  字符串内容
      * @param password 密钥
      * @param type     加密：{@link Cipher#ENCRYPT_MODE}，解密：{@link Cipher#DECRYPT_MODE}
-     * @return 加密/解密结果字符串
+     * @return 加密/解密结果
      */
-    @SuppressLint("DeletedProvider")
-    public static String aes(String content, String password, @AESType int type) {
+    public static String des(String content, String password, @DESType int type) {
         try {
-            KeyGenerator generator = KeyGenerator.getInstance("AES");
-
-            SecureRandom secureRandom;
-            if (android.os.Build.VERSION.SDK_INT >= 24) {
-                secureRandom = SecureRandom.getInstance(SHA1PRNG, new CryptoProvider());
-            } else if (android.os.Build.VERSION.SDK_INT >= 17) {
-                secureRandom = SecureRandom.getInstance(SHA1PRNG, "Crypto");
-            } else {
-                secureRandom = SecureRandom.getInstance(SHA1PRNG);
-            }
-            secureRandom.setSeed(password.getBytes());
-            generator.init(128, secureRandom);
-            SecretKey secretKey = generator.generateKey();
-            byte[] enCodeFormat = secretKey.getEncoded();
-            SecretKeySpec key = new SecretKeySpec(enCodeFormat, "AES");
-            @SuppressLint("GetInstance") Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(type, key);
+            SecureRandom random = new SecureRandom();
+            DESKeySpec desKey = new DESKeySpec(password.getBytes());
+            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+            @SuppressLint("GetInstance") Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(type, keyFactory.generateSecret(desKey), random);
 
             if (type == Cipher.ENCRYPT_MODE) {
                 byte[] byteContent = content.getBytes("utf-8");
@@ -91,8 +73,8 @@ public class AESUtil {
                 return new String(cipher.doFinal(byteContent));
             }
         } catch (NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException |
-                UnsupportedEncodingException | InvalidKeyException | NoSuchPaddingException |
-                NoSuchProviderException e) {
+                 UnsupportedEncodingException | InvalidKeyException | NoSuchPaddingException |
+                 InvalidKeySpecException e) {
             e.printStackTrace();
         }
         return null;

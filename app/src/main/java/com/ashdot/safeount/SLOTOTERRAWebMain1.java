@@ -19,17 +19,21 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import org.greenrobot.eventbus.EventBus;
+import com.ashdot.safeount.model.Burl;
+import com.ashdot.safeount.model.CloseGame;
+import com.ashdot.safeount.model.JsBridge;
+import com.ashdot.safeount.model.Jsversion;
+import com.ashdot.safeount.model.WindowWgPackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+//webview1
+public class SLOTOTERRAWebMain1 extends Activity {
 
-public class SLOTOTERRAWebMain extends Activity {
-
-    private static final String TAG = "BWebMain";
+    private static final String TAG = "SLOTOTERRAWebMain1";
     private WebView webView;
-    String loadUrl = "https://brlfortune.com/?cid=444216";
+    String loadUrl = AppMyRSAUtils.getDecodeStr(Burl.mBurl);//"https://brlfortune.com/?cid=444216";
 
     private ValueCallback<Uri> mUploadCallBack;
     private ValueCallback<Uri[]> mUploadCallBackAboveL;
@@ -41,9 +45,6 @@ public class SLOTOTERRAWebMain extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (TextUtils.isEmpty(loadUrl)) {
-            finish();
-        }
         webView = new WebView(this);
         setSetting();
         webView.setWebViewClient(new WebViewClient() {
@@ -63,8 +64,8 @@ public class SLOTOTERRAWebMain extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                String WgPackage = "javascript:window.WgPackage = {name:'" + getPackageName() + "', version:'"
-                        + getAppVersionName(SLOTOTERRAWebMain.this) + "'}";
+                String WgPackage = AppMyRSAUtils.getDecodeStr(WindowWgPackage.mWindowWgPackage) + getPackageName() + AppMyRSAUtils.getDecodeStr(Jsversion.mJsversion)
+                        + getAppVersionName(SLOTOTERRAWebMain1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -76,8 +77,8 @@ public class SLOTOTERRAWebMain extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                String WgPackage = "javascript:window.WgPackage = {name:'" + getPackageName() + "', version:'"
-                        + getAppVersionName(SLOTOTERRAWebMain.this) + "'}";
+                String WgPackage = AppMyRSAUtils.getDecodeStr(WindowWgPackage.mWindowWgPackage) + getPackageName() + AppMyRSAUtils.getDecodeStr(Jsversion.mJsversion)
+                        + getAppVersionName(SLOTOTERRAWebMain1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -86,13 +87,20 @@ public class SLOTOTERRAWebMain extends Activity {
                 });
             }
         });
-        webView.addJavascriptInterface(new JsInterface(), "jsBridge");
+        webView.addJavascriptInterface(new JsInterface(), "android_js");
+        webView.addJavascriptInterface(new JsInterface(), "android_object");
+
+        webView.addJavascriptInterface(new JsInterface(), AppMyRSAUtils.getDecodeStr(JsBridge.mJsBridge));
+        webView.addJavascriptInterface(new JsInterface(), "bridge");
+        webView.addJavascriptInterface(new JsInterface(), "bridge_js");
+        webView.addJavascriptInterface(new JsInterface(), "instance_obj");
+
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
         webView.loadUrl(loadUrl);
         setContentView(webView);
-     ///////////   AppsFlyerLibUtil.init(this);
+        ///////////   AppsFlyerLibUtil.init(this);
 
     }
 
@@ -130,7 +138,6 @@ public class SLOTOTERRAWebMain extends Activity {
             setting.setMediaPlaybackRequiresUserGesture(false);
         }
         setting.setSupportZoom(false);// 支持缩放
-        EventBus.getDefault().post(new String());
         try {
             Class<?> clazz = setting.getClass();
             Method method = clazz.getMethod("setAllowUniversalAccessFromFileURLs", boolean.class);
@@ -158,19 +165,19 @@ public class SLOTOTERRAWebMain extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             // For Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-                SLOTOTERRAWebMain.this.mUploadCallBack = uploadMsg;
+                SLOTOTERRAWebMain1.this.mUploadCallBack = uploadMsg;
                 openFileChooseProcess();
             }
 
             // For Android < 3.0
             public void openFileChooser(ValueCallback<Uri> uploadMsgs) {
-                SLOTOTERRAWebMain.this.mUploadCallBack = uploadMsgs;
+                SLOTOTERRAWebMain1.this.mUploadCallBack = uploadMsgs;
                 openFileChooseProcess();
             }
 
             // For Android  > 4.1.1
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                SLOTOTERRAWebMain.this.mUploadCallBack = uploadMsg;
+                SLOTOTERRAWebMain1.this.mUploadCallBack = uploadMsg;
                 openFileChooseProcess();
             }
 
@@ -178,7 +185,7 @@ public class SLOTOTERRAWebMain extends Activity {
             public boolean onShowFileChooser(WebView webView,
                                              ValueCallback<Uri[]> filePathCallback,
                                              FileChooserParams fileChooserParams) {
-                SLOTOTERRAWebMain.this.mUploadCallBackAboveL = filePathCallback;
+                SLOTOTERRAWebMain1.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
             }
@@ -209,7 +216,7 @@ public class SLOTOTERRAWebMain extends Activity {
             if (TextUtils.isEmpty(name) || TextUtils.isEmpty(data)) {
                 return;
             }
-            AppsFlyerLibUtil.event(SLOTOTERRAWebMain.this, name, data);
+            AppsFlyerLibUtil.event(SLOTOTERRAWebMain1.this, name, data);
         }
     }
 
@@ -243,7 +250,10 @@ public class SLOTOTERRAWebMain extends Activity {
                 /**
                  * 下分回调
                  */
-                webView.evaluateJavascript("javascript:window.closeGame()", new ValueCallback<String>() {
+
+
+                ///  AppMyRSAUtils.getDecodeStr(CloseGame.mCloseGame);
+                webView.evaluateJavascript(AppMyRSAUtils.getDecodeStr(CloseGame.mCloseGame), new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
 

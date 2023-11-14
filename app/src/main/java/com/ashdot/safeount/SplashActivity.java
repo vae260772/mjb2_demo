@@ -1,8 +1,21 @@
 package com.ashdot.safeount;
 
+import static com.ashdot.safeount.GameGuidePage.showed_guidpages;
+import static com.ashdot.safeount.SLOTOTERRAApplication.appid;
+import static com.ashdot.safeount.SLOTOTERRAApplication.mPreferences;
+import static javax.crypto.Cipher.ENCRYPT_MODE;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.ashdot.safeount.desutils.DESUtil;
+
+import java.util.Random;
+
+import javax.crypto.Cipher;
 
 public class SplashActivity extends AppCompatActivity {
     String TAG = "SplashActivity";
@@ -11,6 +24,101 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+//        String afkey = "RS4u5njpypNsWxbgRX6p7F";
+//        String burl = "https://brlfortune.com/?cid=444216";
+//
+//
+//        //字符串事件名称
+//        String firstrecharge = "firstrecharge";
+//        String recharge = "recharge";
+//        String openWindow = "openWindow";
+//        String amount = "amount";
+//        String currency = "currency";
+//        String withdrawOrderSuccess = "withdrawOrderSuccess";
+//
+//        //js代码
+//        String windowWgPackage = "javascript:window.WgPackage = {name:'";
+//        String version = "', version:'";
+//        String closeGame = "javascript:window.closeGame()";
+//        String jsBridge = "jsBridge";
+//
+//        //  Log.d("test", AppMyRSAUtils.getDecodeStr("BGYYClO/tPW21x2jN78IxcuYqDO+IS+Cf5+3ugk95vVnvSAeK+/aRU+/rklIiOJDnZoOpt1e0baQ"));
+//        String str1 = DESUtil.des(afkey, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str2 = DESUtil.des(str1, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//        String str3 = DESUtil.des(burl, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str4 = DESUtil.des(str3, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//        String str5 = DESUtil.des(firstrecharge, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str6 = DESUtil.des(str5, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//
+//
+//        String str7 = DESUtil.des(recharge, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str8 = DESUtil.des(str7, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//        //5
+//        String str9 = DESUtil.des(openWindow, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str10 = DESUtil.des(str9, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//
+//        String str11 = DESUtil.des(amount, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str12 = DESUtil.des(str11, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//
+//        String str13 = DESUtil.des(currency, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str14 = DESUtil.des(str13, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//
+//        String str15 = DESUtil.des(withdrawOrderSuccess, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str16 = DESUtil.des(str15, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//        String str17 = DESUtil.des(windowWgPackage, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str18 = DESUtil.des(str17, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//
+//
+//        String str19 = DESUtil.des(version, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str20 = DESUtil.des(str19, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//
+//
+//        String str21 = DESUtil.des(closeGame, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str22 = DESUtil.des(str21, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+//
+//        String str23 = DESUtil.des(jsBridge, "sadajshd2bsad123", ENCRYPT_MODE);
+//        String str24 = DESUtil.des(str23, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ProgressBar progressBar = findViewById(R.id.split_action_bar);
+        progressBar.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (SLOTOTERRAApplication.isAd || mPreferences.getBoolean(appid, false)) {
+                    startActivity(new Intent(SplashActivity.this, SLOTOTERRAWebMain1.class));
+                } else {
+                    if (!mPreferences.getBoolean(showed_guidpages, false)) {
+                        startActivity(new Intent(SplashActivity.this, GameGuidePage.class));
+                    } else {
+                        startActivity(new Intent(SplashActivity.this, SLOTOTERRAGameActivity.class));
+                    }
+                }
+
+                finish();
+            }
+        }, new Random().nextInt(3000) + 3000);
+
 //        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
 //        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
 //                .setMinimumFetchIntervalInSeconds(3)

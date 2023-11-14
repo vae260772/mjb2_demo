@@ -29,7 +29,7 @@ public class SLOTOTERRABMain2 extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String url = getIntent().getStringExtra("url");
+        String url = getIntent().getStringExtra("SLOTOTERRABMain2_url");
         Log.e("TAG", "url  =" + url);
 
         if (TextUtils.isEmpty(url)) {

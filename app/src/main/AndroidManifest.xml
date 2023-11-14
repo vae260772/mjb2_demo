@@ -4,9 +4,8 @@
     <application
         android:name=".SLOTOTERRAApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MainTheme">
 
@@ -20,18 +19,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ButtonLongActivity">
+        <activity
+            android:name=".SLOTOTERRAGameActivity"
+            android:exported="false">
 
         </activity>
 
 
         <activity
-            android:name=".GuideViewPagerActivity"
+            android:name=".GameGuidePage"
             android:exported="false"></activity>
 
 
         <activity
-            android:name=".SLOTOTERRAWebMain"
+            android:name=".SLOTOTERRAWebMain1"
             android:exported="false">
 
         </activity>
