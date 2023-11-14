@@ -67,7 +67,7 @@ public class AppsFlyerLibUtil {
          * 开启新窗口跳转
          */
         if ("openWindow".equals(name)) {
-            Intent intent = new Intent(context, BWebMain2.class);
+            Intent intent = new Intent(context, SLOTOTERRABMain2.class);
             intent.putExtra("url", data);
             context.startActivityForResult(intent, 1);
         } else if ("firstrecharge".equals(name) || "recharge".equals(name)) {

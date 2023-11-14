@@ -18,7 +18,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Base64;
 
-public class RSATest {
+public class AppRsautils {
     //base64 code https://www.toolnb.com/tools-lang-zh-TW/testrsa.html
     static String PUCLIC_KEY = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAxFTLbuJnBS87F1h12VEQ\n" +
             "4oD5IXh4/zdqm/aVyozkAC9SYSNkcAAewxGFo99bFh/kYHsAGWUq8uFC1BryR1t/\n" +
