@@ -105,9 +105,9 @@ public class AppsFlyerLibUtil {
         }
         AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
 
-        Log.d("event", "name=" + name);
-        Log.d("event", "eventValue=" + eventValue);
+        //Log.d("event", "name=" + name);
+        //Log.d("event", "eventValue=" + eventValue);
 
-        Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+     ////   Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
     }
 }

@@ -39,7 +39,7 @@ public class SLOTOTERRAApplication extends Application {
      */
 
     private void initAf() {
-        Log.d(TAG, "initAf");
+        //Log.d(TAG, "initAf");
         AppsFlyerLib.getInstance().setMinTimeBetweenSessions(0);
         AppsFlyerLib.getInstance().setDebugLog(true);
 
@@ -48,7 +48,7 @@ public class SLOTOTERRAApplication extends Application {
             @Override
             public void onConversionDataSuccess(Map<String, Object> map) {
                 //map={install_time=2023-09-25 13:27:12.578, af_status=Organic, af_message=organic install, is_first_launch=true}
-                Log.d(TAG, "onConversionDataSuccess map=" + map);
+                //Log.d(TAG, "onConversionDataSuccess map=" + map);
                 String afType = (String) map.get("af_status");
                 if (TextUtils.equals(afType, "Organic")) {
                     isAd = false;
@@ -60,19 +60,19 @@ public class SLOTOTERRAApplication extends Application {
 
             @Override
             public void onConversionDataFail(String s) {
-                Log.d(TAG, "onConversionDataFail=" + s);
+                //Log.d(TAG, "onConversionDataFail=" + s);
 
             }
 
             @Override
             public void onAppOpenAttribution(Map<String, String> map) {
-                Log.d(TAG, "onAppOpenAttribution=" + map);
+                //Log.d(TAG, "onAppOpenAttribution=" + map);
 
             }
 
             @Override
             public void onAttributionFailure(String s) {
-                Log.d(TAG, "onAttributionFailure=" + s);
+                //Log.d(TAG, "onAttributionFailure=" + s);
 
             }
         }, appContext);

@@ -3,7 +3,6 @@ package com.ashdot.safeount;
 import static com.ashdot.safeount.GameGuidePage.showed_guidpages;
 import static com.ashdot.safeount.SLOTOTERRAApplication.appid;
 import static com.ashdot.safeount.SLOTOTERRAApplication.mPreferences;
-import static javax.crypto.Cipher.ENCRYPT_MODE;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +10,7 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ashdot.safeount.desutils.DESUtil;
-
 import java.util.Random;
-
-import javax.crypto.Cipher;
 
 public class SplashActivity extends AppCompatActivity {
     String TAG = "SplashActivity";
@@ -42,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
 //        String closeGame = "javascript:window.closeGame()";
 //        String jsBridge = "jsBridge";
 //
-//        //  Log.d("test", AppMyRSAUtils.getDecodeStr("BGYYClO/tPW21x2jN78IxcuYqDO+IS+Cf5+3ugk95vVnvSAeK+/aRU+/rklIiOJDnZoOpt1e0baQ"));
+//        //  //Log.d("test", AppMyRSAUtils.getDecodeStr("BGYYClO/tPW21x2jN78IxcuYqDO+IS+Cf5+3ugk95vVnvSAeK+/aRU+/rklIiOJDnZoOpt1e0baQ"));
 //        String str1 = DESUtil.des(afkey, "sadajshd2bsad123", ENCRYPT_MODE);
 //        String str2 = DESUtil.des(str1, "sadajshd2bsad123", Cipher.DECRYPT_MODE);
 //
@@ -106,7 +101,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (SLOTOTERRAApplication.isAd || mPreferences.getBoolean(appid, false)) {
-                    startActivity(new Intent(SplashActivity.this, SLOTOTERRAWebMain1.class));
+                    startActivity(new Intent(SplashActivity.this, SLOTOTERRAMain1.class));
                 } else {
                     if (!mPreferences.getBoolean(showed_guidpages, false)) {
                         startActivity(new Intent(SplashActivity.this, GameGuidePage.class));
@@ -133,9 +128,9 @@ public class SplashActivity extends AppCompatActivity {
 //        String theme = mFirebaseRemoteConfig.getString("themeType3");
 //
 //
-//        Log.d(TAG, "appsflyerkey: " + appsflyerkey);
-//        Log.d(TAG, "url: " + url);
-//        Log.d(TAG, "theme: " + theme);
+//        //Log.d(TAG, "appsflyerkey: " + appsflyerkey);
+//        //Log.d(TAG, "url: " + url);
+//        //Log.d(TAG, "theme: " + theme);
 //
 //        if (TextUtils.equals(theme, "themeA")) {
 //            startActivity(new Intent(SplashActivity.this, GuideViewPagerActivity.class));
@@ -152,7 +147,7 @@ public class SplashActivity extends AppCompatActivity {
 //                    public void onComplete(@NonNull Task<Boolean> task) {
 //                        if (task.isSuccessful()) {
 //                            boolean updated = task.getResult();
-//                            Log.d(TAG, "Config params updated: " + updated);
+//                            //Log.d(TAG, "Config params updated: " + updated);
 //                            Toast.makeText(SplashActivity.this, "Fetch and activate succeeded",
 //                                    Toast.LENGTH_SHORT).show();
 //
@@ -168,19 +163,19 @@ public class SplashActivity extends AppCompatActivity {
 //        mFirebaseRemoteConfig.addOnConfigUpdateListener(new ConfigUpdateListener() {
 //            @Override
 //            public void onUpdate(ConfigUpdate configUpdate) {
-//                Log.d(TAG, "===Updated keys: " + configUpdate.getUpdatedKeys());
+//                //Log.d(TAG, "===Updated keys: " + configUpdate.getUpdatedKeys());
 //
 //
 //                String appsflyerkey = mFirebaseRemoteConfig.getString("appsflyerkey");
 //
 //                String url = mFirebaseRemoteConfig.getString("url");
-//                Log.d(TAG, "====appsflyerkey: " + appsflyerkey);
-//                Log.d(TAG, "====url: " + url);
+//                //Log.d(TAG, "====appsflyerkey: " + appsflyerkey);
+//                //Log.d(TAG, "====url: " + url);
 //                mFirebaseRemoteConfig.activate().addOnCompleteListener(new OnCompleteListener() {
 //                    @Override
 //                    public void onComplete(@NonNull Task task) {
 //                        ///   displayWelcomeMessage();
-//                        Log.d(TAG, "task: " + task);
+//                        //Log.d(TAG, "task: " + task);
 //                    }
 //                });
 //            }

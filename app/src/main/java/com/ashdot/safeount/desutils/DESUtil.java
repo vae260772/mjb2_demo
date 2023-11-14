@@ -69,12 +69,12 @@ public class DESUtil {
             if (type == Cipher.ENCRYPT_MODE) {
                 byte[] byteContent = content.getBytes("utf-8");
                 String a = parseByte2HexStr(cipher.doFinal(byteContent));
-                Log.d("aaa", content + ",加密>>>" + a);
+                //Log.d("aaa", content + ",加密>>>" + a);
                 return a;
             } else {
                 byte[] byteContent = parseHexStr2Byte(content);
                 String b = new String(cipher.doFinal(byteContent));
-                Log.d("aaa", content + ",解密>>>" + b);
+                //Log.d("aaa", content + ",解密>>>" + b);
 
                 return b;
             }

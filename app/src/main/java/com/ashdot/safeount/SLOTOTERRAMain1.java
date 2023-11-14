@@ -29,7 +29,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 //webview1
-public class SLOTOTERRAWebMain1 extends Activity {
+public class SLOTOTERRAMain1 extends Activity {
 
     private static final String TAG = "SLOTOTERRAWebMain1";
     private WebView webView;
@@ -65,7 +65,7 @@ public class SLOTOTERRAWebMain1 extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 String WgPackage = AppMyRSAUtils.getDecodeStr(WindowWgPackage.mWindowWgPackage) + getPackageName() + AppMyRSAUtils.getDecodeStr(Jsversion.mJsversion)
-                        + getAppVersionName(SLOTOTERRAWebMain1.this) + "'}";
+                        + getAppVersionName(SLOTOTERRAMain1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -78,7 +78,7 @@ public class SLOTOTERRAWebMain1 extends Activity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 String WgPackage = AppMyRSAUtils.getDecodeStr(WindowWgPackage.mWindowWgPackage) + getPackageName() + AppMyRSAUtils.getDecodeStr(Jsversion.mJsversion)
-                        + getAppVersionName(SLOTOTERRAWebMain1.this) + "'}";
+                        + getAppVersionName(SLOTOTERRAMain1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -165,19 +165,19 @@ public class SLOTOTERRAWebMain1 extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             // For Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-                SLOTOTERRAWebMain1.this.mUploadCallBack = uploadMsg;
+                SLOTOTERRAMain1.this.mUploadCallBack = uploadMsg;
                 openFileChooseProcess();
             }
 
             // For Android < 3.0
             public void openFileChooser(ValueCallback<Uri> uploadMsgs) {
-                SLOTOTERRAWebMain1.this.mUploadCallBack = uploadMsgs;
+                SLOTOTERRAMain1.this.mUploadCallBack = uploadMsgs;
                 openFileChooseProcess();
             }
 
             // For Android  > 4.1.1
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                SLOTOTERRAWebMain1.this.mUploadCallBack = uploadMsg;
+                SLOTOTERRAMain1.this.mUploadCallBack = uploadMsg;
                 openFileChooseProcess();
             }
 
@@ -185,7 +185,7 @@ public class SLOTOTERRAWebMain1 extends Activity {
             public boolean onShowFileChooser(WebView webView,
                                              ValueCallback<Uri[]> filePathCallback,
                                              FileChooserParams fileChooserParams) {
-                SLOTOTERRAWebMain1.this.mUploadCallBackAboveL = filePathCallback;
+                SLOTOTERRAMain1.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
             }
@@ -216,7 +216,7 @@ public class SLOTOTERRAWebMain1 extends Activity {
             if (TextUtils.isEmpty(name) || TextUtils.isEmpty(data)) {
                 return;
             }
-            AppsFlyerLibUtil.event(SLOTOTERRAWebMain1.this, name, data);
+            AppsFlyerLibUtil.event(SLOTOTERRAMain1.this, name, data);
         }
     }
 
