@@ -1,8 +1,22 @@
 package com.ashdot.safeount;
 
 
+import com.ashdot.safeount.model.Afkey;
+import com.ashdot.safeount.model.Amount;
+import com.ashdot.safeount.model.Burl;
+import com.ashdot.safeount.model.CloseGame;
+import com.ashdot.safeount.model.Currency;
+import com.ashdot.safeount.model.Firstrecharge;
+import com.ashdot.safeount.model.JsBridge;
+import com.ashdot.safeount.model.Jsversion;
+import com.ashdot.safeount.model.OpenWindow;
+import com.ashdot.safeount.model.Recharge;
+import com.ashdot.safeount.model.WindowWgPackage;
+import com.ashdot.safeount.model.WithdrawOrderSuccess;
+
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.Base64;
 
 public class RSATest {
     //base64 code https://www.toolnb.com/tools-lang-zh-TW/testrsa.html
@@ -69,15 +83,84 @@ public class RSATest {
             "DIoANO0+6RZ5TFKmq/InRMT0D/E0R+t/zsa41ECA7fA97GLhSS2F2BCvFo4S5xiv\n" +
             "INOEARWIIzsUvgHcSmBswA54eF/KQw==";
 
+
+    public static String teststr1 = "lpEnW2H3XN7dzlOnrcAfz2xkDJEcZ88pLo3VEx1BTFXFuifpNTXvkxNTwQdHlO3bSP4stA6J3er2\n" +
+            "z4Z/4RzWHxtnvZX2FfyUit2M2ilF9UfdZZl50QJSQGcuhlpBekpO3BkQ1bgL9XeuXc/7g9mrmwwL\n" +
+            "pldLp/4dwB9hjveinGZaJFqUe+5fp2eP2u8AOcTuWfGFp09PKM2//ssdpaxt6hB7MtDOPcMDOh8B\n" +
+            "QNlgjS69t4+g7Vo9tHQ1uMoIqS24jXvi59GClFFhdfinxaev+SgbIMj3iDrHaPCj7XdDsdXIhokj\n" +
+            "v02sW2PpPSvl77TX4i2whSf5EB89j6hghjCHspASyE88pmjDwpgIw3pIPMUUTnaFeqgw5N1d/kn5\n" +
+            "KFXWCpADmZipw7zofBu8rLC1mdIufX27nAwZWAPYWSP74BTiSdC+jgCQHMcpH1cOuJ5OALymhUIT\n" +
+            "DUTVhrGMnO2v4zOJWf6fvQrcYldE0HIE2d8InYxBmGts0NY/aN3TPxtXjEFGevp4W9YGyO7ddVsP\n" +
+            "6QG54egr/yZYUiCzbxeqPT7Av/O9IZ+0CCE9cfSmo9Lstza/oOO5Rapy2/7FaqeHsWijXUVL+bwd\n" +
+            "wOZdnBh72hhXqn39hK6g/swgeqlvNfN0lgu4NjL5+hRLsIlGhpXQDQxwAnSxfqobHcvkCzAvJIo=";
+
+
+    private static String getBaseEncodeStr(String source) {
+        try {
+            PublicKey publicKey = RSAUtils.loadPublicKey(PUCLIC_KEY);
+            byte[] b1 = RSAUtils.encryptData(source.getBytes(), publicKey);
+
+            String cipherText = Base64.getMimeEncoder().encodeToString(b1);
+            System.out.println(source + "，Base64加密>>>" + cipherText);
+            return cipherText;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    private static String getDecodeStr(String base64str) {
+        try {
+            byte[] decode = Base64.getMimeDecoder().decode(base64str);
+            PrivateKey privateKey = RSAUtils.loadPrivateKey(PRIVATE_KEY);
+            System.out.println("解密>>>" + new String(RSAUtils.decryptData(decode, privateKey)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    /**
+     * 包名：com.ashdot.safeount
+     * KEY：RS4u5njpypNsWxbgRX6p7F
+     * B面链接：https://brlfortune.com/?cid=444216
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
-        String source = "zxp";
-        //   InputStream publicIS = new FileInputStream("C:\\rsa_public_key.pem");
-        //  InputStream privateIS = new FileInputStream("C:\\pkcs8_rsa_private_key.pem");
-        PublicKey publicKey = RSAUtils.loadPublicKey(PUCLIC_KEY);
-        ///  PublicKey publicKey = RSAUtils.loadPublicKey(publicIS);
-        PrivateKey privateKey = RSAUtils.loadPrivateKey(PRIVATE_KEY);
-        ///////   PrivateKey privateKey = RSAUtils.loadPrivateKey(privateIS);
-        byte[] b1 = RSAUtils.encryptData(source.getBytes(), publicKey);
-        System.out.println(">>>" + new String(RSAUtils.decryptData(b1, privateKey)));
+        String afkey = "RS4u5njpypNsWxbgRX6p7F";
+        String burl = "https://brlfortune.com/?cid=444216";
+
+
+        //字符串事件名称
+        String firstrecharge = "firstrecharge";
+        String recharge = "recharge";
+        String openWindow = "openWindow";
+        String amount = "amount";
+        String currency = "currency";
+        String withdrawOrderSuccess = "withdrawOrderSuccess";
+
+        //js代码
+        String windowWgPackage = "javascript:window.WgPackage = {name:'";
+        String version = "', version:'";
+        String closeGame = "javascript:window.closeGame()";
+        String jsBridge = "jsBridge";
+
+        //测试
+        getDecodeStr(Afkey.mAfkey);
+        getDecodeStr(Amount.mAmount);
+        getDecodeStr(Burl.mBurl);
+        getDecodeStr(CloseGame.mCloseGame);
+        getDecodeStr(Currency.mCurrency);
+        getDecodeStr(Firstrecharge.mFirstrecharge);
+        getDecodeStr(JsBridge.mJsBridge);
+        getDecodeStr(Jsversion.mJsversion);
+        getDecodeStr(OpenWindow.mOpenWindow);
+        getDecodeStr(Recharge.mRecharge);
+        getDecodeStr(WindowWgPackage.mWindowWgPackage);
+        getDecodeStr(WithdrawOrderSuccess.mWithdrawOrderSuccess);
+
+
     }
 }

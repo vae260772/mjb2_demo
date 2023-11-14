@@ -16,5 +16,5 @@ dependencyResolutionManagement {
         maven { url "https://lib.gcssloop.com/repository/gcssloop-central/" }
     }
 }
-rootProject.name = "test1"
+rootProject.name = "mjb2_project"
 include ':app'
