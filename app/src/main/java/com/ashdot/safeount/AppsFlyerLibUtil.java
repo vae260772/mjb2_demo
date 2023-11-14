@@ -1,18 +1,13 @@
-package com.mjb.test1.mj_b_mian;
+package com.ashdot.safeount;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 import com.appsflyer.AFInAppEventParameterName;
 import com.appsflyer.AppsFlyerLib;
-import com.appsflyer.attribution.AppsFlyerRequestListener;
 
 import java.util.HashMap;
 import java.util.Map;

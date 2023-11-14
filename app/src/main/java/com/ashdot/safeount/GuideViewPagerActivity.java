@@ -1,10 +1,9 @@
-package com.mjb.test1;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.ashdot.safeount;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+public class GuideViewPagerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

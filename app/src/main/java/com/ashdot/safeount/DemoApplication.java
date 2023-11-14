@@ -1,4 +1,4 @@
-package com.mjb.test1;
+package com.ashdot.safeount;
 
 import android.app.Application;
 import android.content.Context;

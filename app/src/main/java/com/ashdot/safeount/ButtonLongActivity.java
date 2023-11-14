@@ -1,4 +1,4 @@
-package com.classical.mora.game.diy;
+package com.ashdot.safeount;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.mjb.test1.R;
-
 import java.util.Random;
 
 /* loaded from: classes.dex */

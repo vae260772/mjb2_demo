@@ -3,6 +3,8 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        // 就是下面这一行
+        maven { url "https://lib.gcssloop.com/repository/gcssloop-central/" }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +12,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // 就是下面这一行
+        maven { url "https://lib.gcssloop.com/repository/gcssloop-central/" }
     }
 }
 rootProject.name = "test1"

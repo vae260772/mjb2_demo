@@ -1,4 +1,4 @@
-package com.mjb.test1.mj_b_mian;
+package com.ashdot.safeount;
 
 import android.app.Activity;
 import android.content.Context;
@@ -177,7 +177,7 @@ public class BWebMain extends Activity {
             // For Android  >= 5.0
             public boolean onShowFileChooser(WebView webView,
                                              ValueCallback<Uri[]> filePathCallback,
-                                             WebChromeClient.FileChooserParams fileChooserParams) {
+                                             FileChooserParams fileChooserParams) {
                 BWebMain.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
