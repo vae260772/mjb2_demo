@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+
+android {
+    namespace 'com.perfbrainstorming.happyguessing'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.perfbrainstorming.happyguessing"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+    // 自动生成BuildConfig
+    buildFeatures {
+        //noinspection DataBindingWithoutKapt,DataBindingWithoutKapt,DataBindingWithoutKapt
+        dataBinding = true
+    }
+
+
+    signingConfigs {
+        release {
+            storeFile file('7777.jks')
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+
+        debug {
+            storeFile file('7777.jks')
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+//核心库（必须引入）
+    implementation 'io.github.bumptechlab:vest-core:0.10.1'
+//B面游戏运行平台
+    implementation 'io.github.bumptechlab:vest-sdk:0.10.1'
+//A/B面切换开关
+    implementation 'io.github.bumptechlab:vest-shf:0.10.1'
+    implementation 'androidx.databinding:databinding-runtime:7.1.2'
+    implementation 'me.majiajie:pager-bottom-tab-strip:2.4.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+
+ //   implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+}
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        def requested = details.requested
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                details.useVersion '26.0.2'
+//            }
+//        }
+//    }
+//}
+

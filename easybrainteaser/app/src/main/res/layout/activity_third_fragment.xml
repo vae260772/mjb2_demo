@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:drawableStart="@mipmap/more_share"
+        android:drawablePadding="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:text="分享给好友" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv1"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/line1"
+        android:drawableStart="@mipmap/more_feedback"
+        android:drawablePadding="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:text="意见反馈" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv2"
+        android:background="@color/black" />
+
+    <TextView
+
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/line2"
+        android:drawableStart="@mipmap/more_terms"
+        android:drawablePadding="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:text="用户协议" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv3"
+        android:background="@color/black" />
+
+
+    <LinearLayout
+        android:id="@+id/gxhua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line3"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/line2"
+            android:layout_weight="1"
+            android:drawableStart="@mipmap/more_rate"
+            android:drawablePadding="@dimen/dp_10"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:text="个性化推荐\n关闭个性化推荐，我们将不会给你推送相关最新脑筋急转弯相关素材"
+            android:textSize="10dp" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/gxhua"
+        android:background="@color/black" />
+
+</RelativeLayout>
