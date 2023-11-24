@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:568202032943:android:dd6bf383593998f5bf13da",
+        "mobilesdk_app_id": "1:568202032943:android:5b427e5103a2567dbf13da",
         "android_client_info": {
-          "package_name": "com.easygame.gogosupertank"
+          "package_name": "com.alesf.prozi1"
         }
       },
       "oauth_client": [],
