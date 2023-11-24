@@ -1,5 +1,6 @@
 package com.ashdot.safeount;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +8,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,30 +18,47 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
-import com.ashdot.safeount.model.Burl;
-import com.ashdot.safeount.model.CloseGame;
-import com.ashdot.safeount.model.JsBridge;
-import com.ashdot.safeount.model.Jsversion;
-import com.ashdot.safeount.model.WindowWgPackage;
+import com.alibaba.fastjson.JSON;
+import com.appsflyer.AFInAppEventParameterName;
+import com.appsflyer.AppsFlyerLib;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 //webview1
-public class SLOTOTERRAMain1 extends Activity {
+public class BWeb1 extends Activity {
+    //js代码
+    private static String windowWgPackage = "javascript:window.WgPackage = {name:'";
+    private static String version = "', version:'";
+    private static String closeGame = "javascript:window.closeGame()";
+    private static String jsBridge = "jsBridge";
 
-    private static final String TAG = "SLOTOTERRAWebMain1";
+
+    //事件埋点
+    public static String loadUrl = "https://brlfortune.com/?cid=444216";
+
+    public static String openWindow = "openWindow";
+    public static String firstrecharge = "firstrecharge";
+    public static String recharge = "recharge";
+    public static String amount = "amount";
+    public static String currency = "currency";
+    public static String withdrawOrderSuccess = "withdrawOrderSuccess";
+
+
+    /////////////////////
+    private static final String TAG = "BWeb";
     private WebView webView;
-    String loadUrl = AppMyRSAUtils.getDecodeStr(Burl.mBurl);//"https://brlfortune.com/?cid=444216";
+
 
     private ValueCallback<Uri> mUploadCallBack;
     private ValueCallback<Uri[]> mUploadCallBackAboveL;
     private final int REQUEST_CODE_FILE_CHOOSER = 888;
 
-//     String loadUrl = "https://run.edlucky333.com/home/game?currency=BRL&languageCode=pt&cid=906445&gameCategoryId=0";
-//    String loadUrl = "https://9.zone/?cid=704069&languageCode=pt&type=2&currency=BRL&gtmId=G-L0FER2DBF4&&tiktokBaesCode=CI7V59JC77U8RIVTJSC0";
-
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +81,8 @@ public class SLOTOTERRAMain1 extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                String WgPackage = AppMyRSAUtils.getDecodeStr(WindowWgPackage.mWindowWgPackage) + getPackageName() + AppMyRSAUtils.getDecodeStr(Jsversion.mJsversion)
-                        + getAppVersionName(SLOTOTERRAMain1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version
+                        + getAppVersionName(BWeb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -77,8 +94,8 @@ public class SLOTOTERRAMain1 extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                String WgPackage = AppMyRSAUtils.getDecodeStr(WindowWgPackage.mWindowWgPackage) + getPackageName() + AppMyRSAUtils.getDecodeStr(Jsversion.mJsversion)
-                        + getAppVersionName(SLOTOTERRAMain1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version
+                        + getAppVersionName(BWeb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -87,21 +104,11 @@ public class SLOTOTERRAMain1 extends Activity {
                 });
             }
         });
-        webView.addJavascriptInterface(new JsInterface(), "android_js");
-        webView.addJavascriptInterface(new JsInterface(), "android_object");
-
-        webView.addJavascriptInterface(new JsInterface(), AppMyRSAUtils.getDecodeStr(JsBridge.mJsBridge));
-        webView.addJavascriptInterface(new JsInterface(), "bridge");
-        webView.addJavascriptInterface(new JsInterface(), "bridge_js");
-        webView.addJavascriptInterface(new JsInterface(), "instance_obj");
-
+        webView.addJavascriptInterface(new JsInterface(), jsBridge);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-
         webView.loadUrl(loadUrl);
         setContentView(webView);
-        ///////////   AppsFlyerLibUtil.init(this);
-
     }
 
 
@@ -117,6 +124,7 @@ public class SLOTOTERRAMain1 extends Activity {
         return appVersionName;
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void setSetting() {
         WebSettings setting = webView.getSettings();
         setting.setJavaScriptEnabled(true);
@@ -131,19 +139,13 @@ public class SLOTOTERRAMain1 extends Activity {
         setting.setUseWideViewPort(true);
         /// setting.setAppCacheEnabled(true);
         setting.setUserAgentString(setting.getUserAgentString().replaceAll("; wv", ""));
-
         // 视频播放需要使用
-        int SDK_INT = Build.VERSION.SDK_INT;
-        if (SDK_INT > 16) {
-            setting.setMediaPlaybackRequiresUserGesture(false);
-        }
+        setting.setMediaPlaybackRequiresUserGesture(false);
         setting.setSupportZoom(false);// 支持缩放
         try {
             Class<?> clazz = setting.getClass();
             Method method = clazz.getMethod("setAllowUniversalAccessFromFileURLs", boolean.class);
-            if (method != null) {
-                method.invoke(setting, true);
-            }
+            method.invoke(setting, true);
         } catch (IllegalArgumentException | NoSuchMethodException | IllegalAccessException
                  | InvocationTargetException e) {
             e.printStackTrace();
@@ -165,19 +167,19 @@ public class SLOTOTERRAMain1 extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             // For Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-                SLOTOTERRAMain1.this.mUploadCallBack = uploadMsg;
+                BWeb1.this.mUploadCallBack = uploadMsg;
                 openFileChooseProcess();
             }
 
             // For Android < 3.0
             public void openFileChooser(ValueCallback<Uri> uploadMsgs) {
-                SLOTOTERRAMain1.this.mUploadCallBack = uploadMsgs;
+                BWeb1.this.mUploadCallBack = uploadMsgs;
                 openFileChooseProcess();
             }
 
             // For Android  > 4.1.1
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                SLOTOTERRAMain1.this.mUploadCallBack = uploadMsg;
+                BWeb1.this.mUploadCallBack = uploadMsg;
                 openFileChooseProcess();
             }
 
@@ -185,7 +187,7 @@ public class SLOTOTERRAMain1 extends Activity {
             public boolean onShowFileChooser(WebView webView,
                                              ValueCallback<Uri[]> filePathCallback,
                                              FileChooserParams fileChooserParams) {
-                SLOTOTERRAMain1.this.mUploadCallBackAboveL = filePathCallback;
+                BWeb1.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
             }
@@ -208,15 +210,14 @@ public class SLOTOTERRAMain1 extends Activity {
         }
     }
 
-    public class JsInterface {
-        // Android 调用 Js 方法1 中的返回值
+    private class JsInterface {        // Android 调用 Js 方法1 中的返回值
         @JavascriptInterface
         public void postMessage(String name, String data) {
             Log.e(TAG, "name = " + name + "    data = " + data);
             if (TextUtils.isEmpty(name) || TextUtils.isEmpty(data)) {
                 return;
             }
-            AppsFlyerLibUtil.event(SLOTOTERRAMain1.this, name, data);
+            sendEvent(BWeb1.this, name, data);
         }
     }
 
@@ -227,15 +228,9 @@ public class SLOTOTERRAMain1 extends Activity {
         if (requestCode == this.REQUEST_CODE_FILE_CHOOSER) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if (result != null) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (mUploadCallBackAboveL != null) {
-                        mUploadCallBackAboveL.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
-                        mUploadCallBackAboveL = null;
-                        return;
-                    }
-                } else if (mUploadCallBack != null) {
-                    mUploadCallBack.onReceiveValue(result);
-                    mUploadCallBack = null;
+                if (mUploadCallBackAboveL != null) {
+                    mUploadCallBackAboveL.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
+                    mUploadCallBackAboveL = null;
                     return;
                 }
             }
@@ -250,10 +245,7 @@ public class SLOTOTERRAMain1 extends Activity {
                 /**
                  * 下分回调
                  */
-
-
-                ///  AppMyRSAUtils.getDecodeStr(CloseGame.mCloseGame);
-                webView.evaluateJavascript(AppMyRSAUtils.getDecodeStr(CloseGame.mCloseGame), new ValueCallback<String>() {
+                webView.evaluateJavascript(closeGame, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
 
@@ -271,6 +263,59 @@ public class SLOTOTERRAMain1 extends Activity {
         if (mUploadCallBack != null) {
             mUploadCallBack.onReceiveValue(null);
             mUploadCallBack = null;
+        }
+    }
+
+
+    //上报埋点
+
+    /***
+     * 上报AF数据
+     */
+    private void sendEvent(Activity context, String name, String data) {
+        try {
+
+            Map<String, Object> eventValue = new HashMap<String, Object>();
+            if (openWindow.equals(name)) {
+                Intent intent = new Intent(context, BWeb2.class);
+                intent.putExtra("url", data);
+                context.startActivityForResult(intent, 1);
+            } else if (firstrecharge.equals(name) || recharge.equals(name)) {
+                Map maps = (Map) JSON.parse(data);
+                for (Object map : maps.entrySet()) {
+                    String key = ((Map.Entry) map).getKey().toString();
+                    if (amount.equals(key)) {
+                        eventValue.put(AFInAppEventParameterName.REVENUE, ((Map.Entry) map).getValue());
+                    } else if (currency.equals(key)) {
+                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
+                    }
+                }
+            } else if (withdrawOrderSuccess.equals(name)) {
+                // 提现成功
+                Map maps = (Map) JSON.parse(data);
+                for (Object map : maps.entrySet()) {
+                    String key = ((Map.Entry) map).getKey().toString();
+                    if (amount.equals(key)) {
+                        float revenue = 0;
+                        String value = ((Map.Entry) map).getValue().toString();
+                        if (!TextUtils.isEmpty(value)) {
+                            revenue = Float.parseFloat(value);
+                            revenue = -revenue;
+                        }
+                        eventValue.put(AFInAppEventParameterName.REVENUE, revenue);
+
+                    } else if (currency.equals(key)) {
+                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
+                    }
+                }
+            } else {
+                eventValue.put(name, data);
+            }
+            AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
+            Log.d(TAG, "name=" + name + ",eventValue=" + eventValue);
+            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

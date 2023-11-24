@@ -1,4 +1,5 @@
 package com.ashdot.safeount;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,22 +23,23 @@ import com.alibaba.fastjson.JSON;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class SLOTOTERRABMain2 extends Activity {
+public class BWeb2 extends Activity {
     private WebView webView;
     private String loadUrl;
+    String TAG = "BWeb2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String url = getIntent().getStringExtra("SLOTOTERRABMain2_url");
-        Log.e("TAG", "url  =" + url);
+        String url = getIntent().getStringExtra("url");
+        Log.e(TAG, "url  =" + url);
 
         if (TextUtils.isEmpty(url)) {
             finish();
         }
         com.alibaba.fastjson.JSONObject object = JSON.parseObject(url);
         loadUrl = object.getString("url");
-        Log.e("TAG", "loadUrl  =" + loadUrl);
+        Log.e(TAG, "loadUrl  =" + loadUrl);
         RelativeLayout relativeLayout = new RelativeLayout(this);
         relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -47,18 +49,15 @@ public class SLOTOTERRABMain2 extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
-                Log.e("TAG", "shouldOverrideUrlLoading url  = " + url);
+                Log.e(TAG, "shouldOverrideUrlLoading url  = " + url);
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
-                    SLOTOTERRABMain2.this.finish();
+                    BWeb2.this.finish();
                     return true;
                 } catch (Exception e) {// 防止crash (如果手机上没有安装处理某个scheme开头的url的APP, 会导致crash)
                     return true;// 没有安装该app时，返回true，表示拦截自定义链接，但不跳转，避免弹出上面的错误页面
                 }
-                // TODO Auto-generated method stub
-                // 返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-                // view.loadUrl(uri.toString());
             }
 
             @Override
