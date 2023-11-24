@@ -32,7 +32,7 @@ public class BWeb2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String url = getIntent().getStringExtra("url");
-        Log.e(TAG, "url  =" + url);
+        Log.e(TAG, "url=" + url);
 
         if (TextUtils.isEmpty(url)) {
             finish();
@@ -49,7 +49,7 @@ public class BWeb2 extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
-                Log.e(TAG, "shouldOverrideUrlLoading url  = " + url);
+                Log.d(TAG, "shouldOverrideUrlLoading url  = " + url);
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
@@ -63,6 +63,9 @@ public class BWeb2 extends Activity {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
+                Log.d(TAG, "onReceivedError failingUrl  = " + failingUrl);
+
+
                 if (TextUtils.equals(failingUrl, loadUrl)) {
                     view.post(new Runnable() {
                         @Override
@@ -86,7 +89,7 @@ public class BWeb2 extends Activity {
                 finish();
             }
         });
-        textView.setText("X ");
+        textView.setText("X");
         textView.setTextColor(Color.RED);
         textView.setTextSize(25);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,

@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class DemoApplication extends Application {
     public static Context appContext;
-    private static String TAG = "";
+    private static String TAG = "DemoApplication";
 
     @Override
     public void onCreate() {
@@ -24,10 +24,9 @@ public class DemoApplication extends Application {
     }
 
     /**
-     * 初始化AppsFlyer
-     * 包名：com.apansrat.pusblotan
-     * AF Dev Key：ZqdFx3sCpWzXmJLjDaesHJ
-     * 跳转链接：https:9f021662.xyz/
+     包名：com.easygame.gogosupertank
+     KEY：MqxRKVJCjm4poobgqsTtba
+     https://brlbet2.com/?cid=242409
      */
 
     public static void initAppsFlyer(String afkey) {

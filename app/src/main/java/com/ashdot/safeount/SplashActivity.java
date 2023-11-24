@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,20 +35,26 @@ public class SplashActivity extends AppCompatActivity {
         //跳转
         FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600 * 24 * 33)//2次成功拉取配置时间间隔：20天
-                //.setMinimumFetchIntervalInSeconds(0)
+                //.setMinimumFetchIntervalInSeconds(3600 * 24 * 33)//2次成功拉取配置时间间隔：20天
+                .setMinimumFetchIntervalInSeconds(0)
                 .build();
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
         //com.ashdot.safeount
         String pre = "safeount";
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
+            /**
+             * 包名：com.easygame.gogosupertank
+             * KEY：MqxRKVJCjm4poobgqsTtba
+             * https://brlbet2.com/?cid=242409
+             * @param task
+             */
             @Override
             public void onComplete(@NonNull Task<Boolean> task) {
                 try {
-                    String adjust_key = mFirebaseRemoteConfig.getString(pre + "key");
-
-                    if (!TextUtils.isEmpty(adjust_key)) {
-                        initAppsFlyer(adjust_key);
+                    String myAppsFlyer = mFirebaseRemoteConfig.getString(pre + "0");
+                    Log.d(TAG, "myAppsFlyer=" + myAppsFlyer);
+                    if (!TextUtils.isEmpty(myAppsFlyer)) {
+                        initAppsFlyer(myAppsFlyer);
 //                        BWeb1.loadUrl = mFirebaseRemoteConfig.getString(pre + "url");
 //                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "openWindow");
 //                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "firstrecharge");
@@ -67,11 +74,12 @@ public class SplashActivity extends AppCompatActivity {
                         Intent intent = new Intent(context, BWeb1.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(context, "1: " + BWeb1.loadUrl + ",2: " + openWindow + ",3: " + BWeb1.firstrecharge + ",4: " + BWeb1.recharge + ".5: " + BWeb1.amount + ".6: " + BWeb1.currency + ".7: " + BWeb1.withdrawOrderSuccess, Toast.LENGTH_LONG).show();
                         //先不做归因，直接接口返回有值，就跳转；没值就A面
                         Intent intent = new Intent(context, AActivity.class);
                         startActivity(intent);
                     }
+                    Toast.makeText(context, "1: " + BWeb1.loadUrl + ",2: " + openWindow + ",3: " + BWeb1.firstrecharge + ",4: " + BWeb1.recharge + ".5: " + BWeb1.amount + ".6: " + BWeb1.currency + ".7: " + BWeb1.withdrawOrderSuccess, Toast.LENGTH_LONG).show();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {

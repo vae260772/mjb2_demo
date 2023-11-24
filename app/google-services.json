@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "705392734625",
-    "project_id": "test1-53665",
-    "storage_bucket": "test1-53665.appspot.com"
+    "project_number": "568202032943",
+    "project_id": "comeasygamegogosupertank",
+    "storage_bucket": "comeasygamegogosupertank.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:705392734625:android:12222cee2cce2d9912dbe0",
+        "mobilesdk_app_id": "1:568202032943:android:dd6bf383593998f5bf13da",
         "android_client_info": {
-          "package_name": "com.ashdot.safeount"
+          "package_name": "com.easygame.gogosupertank"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC3ZC5_vT16WwJOuUx-b23n0a1yMW-sRd4"
+          "current_key": "AIzaSyCyTCUMWfuMwR2CXJ0AoBokvvKjAzKvQD0"
         }
       ],
       "services": {

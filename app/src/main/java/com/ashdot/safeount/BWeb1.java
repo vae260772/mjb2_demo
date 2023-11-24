@@ -81,8 +81,7 @@ public class BWeb1 extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                String WgPackage = windowWgPackage + getPackageName() + version
-                        + getAppVersionName(BWeb1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(BWeb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -94,8 +93,7 @@ public class BWeb1 extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                String WgPackage = windowWgPackage + getPackageName() + version
-                        + getAppVersionName(BWeb1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(BWeb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -115,8 +113,7 @@ public class BWeb1 extends Activity {
     public String getAppVersionName(Context context) {
         String appVersionName = "";
         try {
-            PackageInfo packageInfo = context.getApplicationContext().getPackageManager()
-                    .getPackageInfo(context.getPackageName(), 0);
+            PackageInfo packageInfo = context.getApplicationContext().getPackageManager().getPackageInfo(context.getPackageName(), 0);
             appVersionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, e.getMessage());
@@ -146,14 +143,13 @@ public class BWeb1 extends Activity {
             Class<?> clazz = setting.getClass();
             Method method = clazz.getMethod("setAllowUniversalAccessFromFileURLs", boolean.class);
             method.invoke(setting, true);
-        } catch (IllegalArgumentException | NoSuchMethodException | IllegalAccessException
-                 | InvocationTargetException e) {
+        } catch (IllegalArgumentException | NoSuchMethodException | IllegalAccessException |
+                 InvocationTargetException e) {
             e.printStackTrace();
         }
         webView.setDownloadListener(new DownloadListener() {
             @Override
-            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
-                                        long contentLength) {
+            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
                 Intent intent = new Intent();
                 // 设置意图动作为打开浏览器
                 intent.setAction(Intent.ACTION_VIEW);
@@ -184,9 +180,7 @@ public class BWeb1 extends Activity {
             }
 
             // For Android  >= 5.0
-            public boolean onShowFileChooser(WebView webView,
-                                             ValueCallback<Uri[]> filePathCallback,
-                                             FileChooserParams fileChooserParams) {
+            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
                 BWeb1.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
@@ -312,7 +306,7 @@ public class BWeb1 extends Activity {
                 eventValue.put(name, data);
             }
             AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
-            Log.d(TAG, "name=" + name + ",eventValue=" + eventValue);
+            Log.d(TAG, "name=" + name + ",data=" + data + ",eventValue=" + eventValue);
             Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
