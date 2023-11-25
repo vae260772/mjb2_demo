@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "568202032943",
-    "project_id": "comeasygamegogosupertank",
-    "storage_bucket": "comeasygamegogosupertank.appspot.com"
+    "project_number": "957246410506",
+    "project_id": "prozi1",
+    "storage_bucket": "prozi1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:568202032943:android:5b427e5103a2567dbf13da",
+        "mobilesdk_app_id": "1:957246410506:android:b8c27fe1d4ecad3c0374f3",
         "android_client_info": {
           "package_name": "com.alesf.prozi1"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCyTCUMWfuMwR2CXJ0AoBokvvKjAzKvQD0"
+          "current_key": "AIzaSyAAhbPGXSTwP_PmpuwuKsycn42b7NQkWtw"
         }
       ],
       "services": {
