@@ -65,47 +65,6 @@ public class BWeb1 extends Activity {
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
         setSetting();
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                super.onReceivedError(view, errorCode, description, failingUrl);
-                if (TextUtils.equals(failingUrl, loadUrl)) {
-                    view.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            finish();
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(BWeb1.this) + "'}";
-                webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(BWeb1.this) + "'}";
-                webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-
-                    }
-                });
-            }
-        });
-        webView.addJavascriptInterface(new JsInterface(), jsBridgeObjName);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.loadUrl(loadUrl);
         setContentView(webView);
     }
@@ -187,6 +146,54 @@ public class BWeb1 extends Activity {
                 return true;
             }
         });
+
+
+        //2
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+                if (TextUtils.equals(failingUrl, loadUrl)) {
+                    view.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(BWeb1.this) + "'}";
+                webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(BWeb1.this) + "'}";
+                webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+
+                    }
+                });
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.d(TAG, "url=" + url);
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
+        webView.addJavascriptInterface(new JsInterface(), jsBridgeObjName);
     }
 
     private void openFileChooseProcess() {
