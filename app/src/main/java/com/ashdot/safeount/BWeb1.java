@@ -65,8 +65,8 @@ public class BWeb1 extends Activity {
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
         setSetting();
-        webView.loadUrl(loadUrl);
         setContentView(webView);
+        webView.loadUrl(loadUrl);
     }
 
 
@@ -121,24 +121,6 @@ public class BWeb1 extends Activity {
             }
         });
         webView.setWebChromeClient(new WebChromeClient() {
-            // For Android 3.0+
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-                BWeb1.this.mUploadCallBack = uploadMsg;
-                openFileChooseProcess();
-            }
-
-            // For Android < 3.0
-            public void openFileChooser(ValueCallback<Uri> uploadMsgs) {
-                BWeb1.this.mUploadCallBack = uploadMsgs;
-                openFileChooseProcess();
-            }
-
-            // For Android  > 4.1.1
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                BWeb1.this.mUploadCallBack = uploadMsg;
-                openFileChooseProcess();
-            }
-
             // For Android  >= 5.0
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
                 BWeb1.this.mUploadCallBackAboveL = filePathCallback;

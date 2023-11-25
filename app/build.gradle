@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.alesf.prozi1"
+        applicationId "com.hdknf.jdnbdjnfnbc"
         minSdk 26
         targetSdk 33
         versionCode 1
