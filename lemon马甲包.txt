@@ -1,0 +1,9 @@
+充值window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_purchase", "af_currency":"BRL", "af_revenue": item.param.money, "uid": localStorage.getItem('uid')}))
+
+注册window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_complete_registration", "uid": res.uid, "pid": getQueryString('pid')}))
+
+登录window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_login", "uid": res.data.uid}))
+
+首冲
+af_first_purchase
+window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_first_purchase", "af_currency":"BRL", "af_revenue": item.param.money, "uid": localStorage.getItem('uid')}))
