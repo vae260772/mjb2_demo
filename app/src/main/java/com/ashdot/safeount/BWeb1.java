@@ -40,7 +40,7 @@ public class BWeb1 extends Activity {
     //事件埋点动态
     public static String jsBridgeObjName = "";
 
-    public static String loadUrl = "https://brlfortune.com/?cid=444216";
+    public static String loadUrl = "";//https://brlfortune.com/?cid=444216
 
     public static String openWindow = "";
     public static String firstrecharge = "";
