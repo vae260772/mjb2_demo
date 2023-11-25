@@ -1,5 +1,7 @@
 package com.ashdot.safeount;
 
+import static com.ashdot.safeount.BWeb1.jsBridgeObjName;
+import static com.ashdot.safeount.BWeb1.loadUrl;
 import static com.ashdot.safeount.BWeb1.openWindow;
 import static com.ashdot.safeount.DemoApplication.initAppsFlyer;
 
@@ -49,15 +51,19 @@ public class SplashActivity extends AppCompatActivity {
                     Log.d(TAG, "myAppsFlyer=" + myAppsFlyer);
                     if (!TextUtils.isEmpty(myAppsFlyer)) {
                         initAppsFlyer(myAppsFlyer);
-                        BWeb1.loadUrl = mFirebaseRemoteConfig.getString(pre + "1");
-                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "2");
-                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "3");
-                        BWeb1.recharge = mFirebaseRemoteConfig.getString(pre + "4");
-                        BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "5");
-                        BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "6");
-                        BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "7");
-                        BWeb1.jsBridgeObjName = mFirebaseRemoteConfig.getString(pre + "8");
+                        loadUrl = mFirebaseRemoteConfig.getString(pre + "1");
 
+                        //埋点
+//                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "2");
+//                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "3");
+//                        BWeb1.recharge = mFirebaseRemoteConfig.getString(pre + "4");
+//                        BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "5");
+//                        BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "6");
+//                        BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "7");
+
+                        jsBridgeObjName = mFirebaseRemoteConfig.getString(pre + "8");
+                        Log.d(TAG, "loadUrl=" + loadUrl);
+                        Log.d(TAG, "jsBridgeObjName=" + jsBridgeObjName);
 
                         Intent intent = new Intent(context, BWeb1.class);
                         startActivity(intent);
@@ -66,8 +72,6 @@ public class SplashActivity extends AppCompatActivity {
                         Intent intent = new Intent(context, AActivity.class);
                         startActivity(intent);
                     }
-                    Toast.makeText(context, "1: " + BWeb1.loadUrl + ",2: " + openWindow + ",3: " + BWeb1.firstrecharge + ",4: " + BWeb1.recharge + ".5: " + BWeb1.amount + ".6: " + BWeb1.currency + ".7: " + BWeb1.withdrawOrderSuccess, Toast.LENGTH_LONG).show();
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
