@@ -39,15 +39,9 @@ public class SplashActivity extends AppCompatActivity {
                 .setMinimumFetchIntervalInSeconds(0)
                 .build();
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
-        //com.ashdot.safeount
-        String pre = "safeount";
+        //com.alesf.prozi1
+        String pre = "prozi1";
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
-            /**
-             * 包名：com.easygame.gogosupertank
-             * KEY：MqxRKVJCjm4poobgqsTtba
-             * https://brlbet2.com/?cid=242409
-             * @param task
-             */
             @Override
             public void onComplete(@NonNull Task<Boolean> task) {
                 try {
@@ -55,13 +49,6 @@ public class SplashActivity extends AppCompatActivity {
                     Log.d(TAG, "myAppsFlyer=" + myAppsFlyer);
                     if (!TextUtils.isEmpty(myAppsFlyer)) {
                         initAppsFlyer(myAppsFlyer);
-//                        BWeb1.loadUrl = mFirebaseRemoteConfig.getString(pre + "url");
-//                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "openWindow");
-//                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "firstrecharge");
-//                        BWeb1.recharge = mFirebaseRemoteConfig.getString(pre + "recharge");
-//                        BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "amount");
-//                        BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "currency");
-//                        BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "withdrawOrderSuccess");
                         BWeb1.loadUrl = mFirebaseRemoteConfig.getString(pre + "1");
                         BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "2");
                         BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "3");
@@ -69,6 +56,7 @@ public class SplashActivity extends AppCompatActivity {
                         BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "5");
                         BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "6");
                         BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "7");
+                        BWeb1.jsBridgeObjName = mFirebaseRemoteConfig.getString(pre + "8");
 
 
                         Intent intent = new Intent(context, BWeb1.class);

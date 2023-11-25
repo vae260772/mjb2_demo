@@ -35,18 +35,19 @@ public class BWeb1 extends Activity {
     private static String windowWgPackage = "javascript:window.WgPackage = {name:'";
     private static String version = "', version:'";
     private static String closeGame = "javascript:window.closeGame()";
-    private static String jsBridge = "jsBridge";
 
 
-    //事件埋点
+    //事件埋点动态
+    public static String jsBridgeObjName = "";
+
     public static String loadUrl = "https://brlfortune.com/?cid=444216";
 
-    public static String openWindow = "openWindow";
-    public static String firstrecharge = "firstrecharge";
-    public static String recharge = "recharge";
-    public static String amount = "amount";
-    public static String currency = "currency";
-    public static String withdrawOrderSuccess = "withdrawOrderSuccess";
+    public static String openWindow = "";
+    public static String firstrecharge = "";
+    public static String recharge = "";
+    public static String amount = "";
+    public static String currency = "";
+    public static String withdrawOrderSuccess = "";
 
 
     /////////////////////
@@ -102,7 +103,7 @@ public class BWeb1 extends Activity {
                 });
             }
         });
-        webView.addJavascriptInterface(new JsInterface(), jsBridge);
+        webView.addJavascriptInterface(new JsInterface(), jsBridgeObjName);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.loadUrl(loadUrl);
@@ -207,11 +208,31 @@ public class BWeb1 extends Activity {
     private class JsInterface {        // Android 调用 Js 方法1 中的返回值
         @JavascriptInterface
         public void postMessage(String name, String data) {
-            Log.e(TAG, "name = " + name + "    data = " + data);
+            Log.d(TAG, "1 name = " + name + ",data = " + data);
             if (TextUtils.isEmpty(name) || TextUtils.isEmpty(data)) {
                 return;
             }
             sendEvent(BWeb1.this, name, data);
+        }
+
+        @JavascriptInterface
+        public void appsFlyerEvent(String name, String data) {
+            Log.d(TAG, "2 name = " + name + ",data = " + data);
+            Map maps = (Map) JSON.parse(data);
+            String eventName = name;
+            AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
+            Log.d(TAG, "eventName=" + eventName + ",maps=" + maps);
+            Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
+        }
+
+        @JavascriptInterface
+        public void appsFlyerEvent(String data) {
+            Log.d(TAG, "3 data = " + data);
+            Map maps = (Map) JSON.parse(data);
+            String eventName = (String) maps.get("event_type");
+            AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
+            Log.d(TAG, "eventName=" + eventName + ",maps=" + maps);
+            Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
         }
     }
 
