@@ -36,12 +36,12 @@ public class BWeb1 extends Activity {
     private static String version = "', version:'";
     private static String closeGame = "javascript:window.closeGame()";
 
+    //b面链接
+    public static String loadUrl = "";//https://brlfortune.com/?cid=444216
+    public static String jsBridgeObjName = "";//apkClient
+
 
     //事件埋点动态
-    public static String jsBridgeObjName = "";
-
-    public static String loadUrl = "";//https://brlfortune.com/?cid=444216
-
     public static String openWindow = "";
     public static String firstrecharge = "";
     public static String recharge = "";
@@ -51,7 +51,7 @@ public class BWeb1 extends Activity {
 
 
     /////////////////////
-    private static final String TAG = "BWeb";
+    private static final String TAG = "BWeb1";
     private WebView webView;
 
 
@@ -205,28 +205,21 @@ public class BWeb1 extends Activity {
         }
     }
 
-    private class JsInterface {        // Android 调用 Js 方法1 中的返回值
-        @JavascriptInterface
-        public void postMessage(String name, String data) {
-            Log.d(TAG, "1 name = " + name + ",data = " + data);
-            if (TextUtils.isEmpty(name) || TextUtils.isEmpty(data)) {
-                return;
-            }
-            sendEvent(BWeb1.this, name, data);
-        }
-
-        @JavascriptInterface
-        public void appsFlyerEvent(String name, String data) {
-            Log.d(TAG, "2 name = " + name + ",data = " + data);
-            Map maps = (Map) JSON.parse(data);
-            String eventName = name;
-            AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
-            Log.d(TAG, "eventName=" + eventName + ",maps=" + maps);
-            Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
-        }
-
+    /**
+     * 充值window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_purchase", "af_currency":"BRL", "af_revenue": item.param.money, "uid": localStorage.getItem('uid')}))
+     * <p>
+     * 注册window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_complete_registration", "uid": res.uid, "pid": getQueryString('pid')}))
+     * <p>
+     * 登录window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_login", "uid": res.data.uid}))
+     * <p>
+     * 首冲
+     * af_first_purchase
+     * window.apkClient.appsFlyerEvent(JSON.stringify({"event_type": "af_first_purchase", "af_currency":"BRL", "af_revenue": item.param.money, "uid": localStorage.getItem('uid')}))
+     */
+    private class JsInterface {
         @JavascriptInterface
         public void appsFlyerEvent(String data) {
+            // {"event_type":"af_complete_registration","uid":"35283135","pid":"1121"
             Log.d(TAG, "3 data = " + data);
             Map maps = (Map) JSON.parse(data);
             String eventName = (String) maps.get("event_type");
@@ -250,7 +243,6 @@ public class BWeb1 extends Activity {
                 }
             }
             clearUploadMessage();
-            return;
         } else if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
                 if (webView == null) {
@@ -289,7 +281,6 @@ public class BWeb1 extends Activity {
      */
     private void sendEvent(Activity context, String name, String data) {
         try {
-
             Map<String, Object> eventValue = new HashMap<String, Object>();
             if (openWindow.equals(name)) {
                 Intent intent = new Intent(context, BWeb2.class);
