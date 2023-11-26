@@ -69,12 +69,12 @@ public class SplashActivity extends AppCompatActivity {
 
 
                         //6个
-//                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "3");
-//                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "4");
-//                        BWeb1.recharge = mFirebaseRemoteConfig.getString(pre + "5");
-//                        BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "6");
-//                        BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "7");
-//                        BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "8");
+                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "3");
+                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "4");
+                        BWeb1.recharge = mFirebaseRemoteConfig.getString(pre + "5");
+                        BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "6");
+                        BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "7");
+                        BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "8");
 
 
                         Toast.makeText(SplashActivity.this, "B面 loadUrl=" + BWeb1.loadUrl, Toast.LENGTH_LONG).show();
