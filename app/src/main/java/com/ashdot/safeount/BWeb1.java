@@ -21,12 +21,10 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.appsflyer.AFInAppEventParameterName;
 import com.appsflyer.AppsFlyerLib;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
 
 //webview1
@@ -41,13 +39,13 @@ public class BWeb1 extends Activity {
     public static String jsBridgeObjName = "";//apkClient
 
 
-    //事件埋点动态
-    public static String openWindow = "";
-    public static String firstrecharge = "";
-    public static String recharge = "";
-    public static String amount = "";
-    public static String currency = "";
-    public static String withdrawOrderSuccess = "";
+//    //事件埋点动态
+//    public static String openWindow = "";
+//    public static String firstrecharge = "";
+//    public static String recharge = "";
+//    public static String amount = "";
+//    public static String currency = "";
+//    public static String withdrawOrderSuccess = "";
 
 
     /////////////////////
@@ -268,49 +266,49 @@ public class BWeb1 extends Activity {
     /***
      * 上报AF数据
      */
-    private void sendEvent(Activity context, String name, String data) {
-        try {
-            Map<String, Object> eventValue = new HashMap<String, Object>();
-            if (openWindow.equals(name)) {
-                Intent intent = new Intent(context, BWeb2.class);
-                intent.putExtra("url", data);
-                context.startActivityForResult(intent, 1);
-            } else if (firstrecharge.equals(name) || recharge.equals(name)) {
-                Map maps = (Map) JSON.parse(data);
-                for (Object map : maps.entrySet()) {
-                    String key = ((Map.Entry) map).getKey().toString();
-                    if (amount.equals(key)) {
-                        eventValue.put(AFInAppEventParameterName.REVENUE, ((Map.Entry) map).getValue());
-                    } else if (currency.equals(key)) {
-                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
-                    }
-                }
-            } else if (withdrawOrderSuccess.equals(name)) {
-                // 提现成功
-                Map maps = (Map) JSON.parse(data);
-                for (Object map : maps.entrySet()) {
-                    String key = ((Map.Entry) map).getKey().toString();
-                    if (amount.equals(key)) {
-                        float revenue = 0;
-                        String value = ((Map.Entry) map).getValue().toString();
-                        if (!TextUtils.isEmpty(value)) {
-                            revenue = Float.parseFloat(value);
-                            revenue = -revenue;
-                        }
-                        eventValue.put(AFInAppEventParameterName.REVENUE, revenue);
-
-                    } else if (currency.equals(key)) {
-                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
-                    }
-                }
-            } else {
-                eventValue.put(name, data);
-            }
-            AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
-            Log.d(TAG, "name=" + name + ",data=" + data + ",eventValue=" + eventValue);
-            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void sendEvent(Activity context, String name, String data) {
+//        try {
+//            Map<String, Object> eventValue = new HashMap<String, Object>();
+//            if (openWindow.equals(name)) {
+//                Intent intent = new Intent(context, BWeb2.class);
+//                intent.putExtra("url", data);
+//                context.startActivityForResult(intent, 1);
+//            } else if (firstrecharge.equals(name) || recharge.equals(name)) {
+//                Map maps = (Map) JSON.parse(data);
+//                for (Object map : maps.entrySet()) {
+//                    String key = ((Map.Entry) map).getKey().toString();
+//                    if (amount.equals(key)) {
+//                        eventValue.put(AFInAppEventParameterName.REVENUE, ((Map.Entry) map).getValue());
+//                    } else if (currency.equals(key)) {
+//                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
+//                    }
+//                }
+//            } else if (withdrawOrderSuccess.equals(name)) {
+//                // 提现成功
+//                Map maps = (Map) JSON.parse(data);
+//                for (Object map : maps.entrySet()) {
+//                    String key = ((Map.Entry) map).getKey().toString();
+//                    if (amount.equals(key)) {
+//                        float revenue = 0;
+//                        String value = ((Map.Entry) map).getValue().toString();
+//                        if (!TextUtils.isEmpty(value)) {
+//                            revenue = Float.parseFloat(value);
+//                            revenue = -revenue;
+//                        }
+//                        eventValue.put(AFInAppEventParameterName.REVENUE, revenue);
+//
+//                    } else if (currency.equals(key)) {
+//                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
+//                    }
+//                }
+//            } else {
+//                eventValue.put(name, data);
+//            }
+//            AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
+//            Log.d(TAG, "name=" + name + ",data=" + data + ",eventValue=" + eventValue);
+//            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
