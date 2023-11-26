@@ -38,7 +38,7 @@ public class BWeb1 extends Activity {
 
     //b面链接
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
-    public static String jsBridgeObjName = "";//apkClient
+    public static String jsBridgeObjName = "";//jsBridge
 
 
     //事件埋点动态
@@ -57,7 +57,7 @@ public class BWeb1 extends Activity {
 
     private ValueCallback<Uri> mUploadCallBack;
     private ValueCallback<Uri[]> mUploadCallBackAboveL;
-    private final int REQUEST_CODE_FILE_CHOOSER = 888;
+    private final int REQUEST_CODE_FILE_CHOOSER = 2222;
 
     Context context;
 
@@ -196,6 +196,7 @@ public class BWeb1 extends Activity {
             super.onBackPressed();
         }
     }
+
     private class JsInterface {
         @JavascriptInterface
         public void postMessage(String name, String data) {
@@ -261,22 +262,20 @@ public class BWeb1 extends Activity {
                 }
             }
             clearUploadMessage();
-        } else if (resultCode == RESULT_OK) {
-            if (requestCode == 1) {
-                if (webView == null) {
-                    return;
-                }
-                Log.e(TAG, "---------下分成功-----");
-                /**
-                 * 下分回调
-                 */
-                webView.evaluateJavascript(closeGame, new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-
-                    }
-                });
+        } else if (requestCode == 1) {
+            if (webView == null) {
+                return;
             }
+            Log.e(TAG, "---------下分成功-----");
+            /**
+             * 下分回调
+             */
+            webView.evaluateJavascript(closeGame, new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String value) {
+
+                }
+            });
         }
     }
 
