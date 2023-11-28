@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "957246410506",
-    "project_id": "prozi1",
-    "storage_bucket": "prozi1.appspot.com"
+    "project_number": "460567202674",
+    "project_id": "comhdknfjdnbdjnfnbc1",
+    "storage_bucket": "comhdknfjdnbdjnfnbc1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:957246410506:android:b8c27fe1d4ecad3c0374f3",
-        "android_client_info": {
-          "package_name": "com.alesf.prozi1"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAAhbPGXSTwP_PmpuwuKsycn42b7NQkWtw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:957246410506:android:dc9418063147db090374f3",
+        "mobilesdk_app_id": "1:460567202674:android:c08ce53e5f3f1504532beb",
         "android_client_info": {
           "package_name": "com.hdknf.jdnbdjnfnbc"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAAhbPGXSTwP_PmpuwuKsycn42b7NQkWtw"
+          "current_key": "AIzaSyBMMcCH9OuHAsRPu0CWJDNaBMbo3-cnlGs"
         }
       ],
       "services": {

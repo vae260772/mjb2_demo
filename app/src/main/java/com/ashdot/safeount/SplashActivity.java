@@ -84,7 +84,7 @@ public class SplashActivity extends AppCompatActivity {
                         finish();
                     } else {
                         //先不做归因，直接接口返回有值，就跳转；没值就A面
-                        Intent intent = new Intent(context, AActivity.class);
+                        Intent intent = new Intent(context, jdnbdjnfnbc_MainActivity2.class);
                         startActivity(intent);
                         finish();
                     }
