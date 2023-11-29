@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ashdot.safeount'
+    namespace 'com.abcdk.puuhdjncluk'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.hdknf.jdnbdjnfnbc"
+        applicationId "com.abcdk.puuhdjncluk"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -33,14 +33,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('2159.jks')
+            storeFile file('2.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
         }
 
         debug {
-            storeFile file('2159.jks')
+            storeFile file('2.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
@@ -48,7 +48,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
