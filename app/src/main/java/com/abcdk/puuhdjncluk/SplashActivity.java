@@ -1,7 +1,7 @@
-package com.ashdot.safeount;
+package com.abcdk.puuhdjncluk;
 
-import static com.ashdot.safeount.BWeb1.jsBridgeObjName;
-import static com.ashdot.safeount.DemoApplication.initAppsFlyer;
+import static com.abcdk.puuhdjncluk.BWeb1.jsBridgeObjName;
+import static com.abcdk.puuhdjncluk.DemoApplication.initAppsFlyer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ashdot.safeount.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -41,19 +42,6 @@ public class SplashActivity extends AppCompatActivity {
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
         //com.alesf.prozi1
         String pre = "prozi1";
-//        initAppsFlyer("Wrc4U2dv2F3ipkThjCriKT");
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadUrl = "https://www.abcd33.bet?pid=1121";
-//                jsBridgeObjName = "apkClient";
-//                Intent intent = new Intent(context, BWeb1.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        }, 1500);
-
-
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
             @Override
             public void onComplete(@NonNull Task<Boolean> task) {
@@ -66,30 +54,22 @@ public class SplashActivity extends AppCompatActivity {
                         jsBridgeObjName = mFirebaseRemoteConfig.getString(pre + "2");//apkClient
                         Log.d(TAG, "loadUrl=" + BWeb1.loadUrl);
                         Log.d(TAG, "jsBridgeObjName=" + jsBridgeObjName);
-
-
-                        //6个
-//                        BWeb1.openWindow = mFirebaseRemoteConfig.getString(pre + "3");
-//                        BWeb1.firstrecharge = mFirebaseRemoteConfig.getString(pre + "4");
-//                        BWeb1.recharge = mFirebaseRemoteConfig.getString(pre + "5");
-//                        BWeb1.amount = mFirebaseRemoteConfig.getString(pre + "6");
-//                        BWeb1.currency = mFirebaseRemoteConfig.getString(pre + "7");
-//                        BWeb1.withdrawOrderSuccess = mFirebaseRemoteConfig.getString(pre + "8");
-
-
                         Toast.makeText(SplashActivity.this, "B面 loadUrl=" + BWeb1.loadUrl, Toast.LENGTH_LONG).show();
-
                         Intent intent = new Intent(context, BWeb1.class);
                         startActivity(intent);
                         finish();
                     } else {
                         //先不做归因，直接接口返回有值，就跳转；没值就A面
-                        Intent intent = new Intent(context, jdnbdjnfnbc_MainActivity2.class);
+                        Intent intent = new Intent(context, AActivity.class);
                         startActivity(intent);
                         finish();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    //先不做归因，直接接口返回有值，就跳转；没值就A面
+                    Intent intent = new Intent(context, AActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });

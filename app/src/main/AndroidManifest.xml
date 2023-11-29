@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name=".DemoApplication"
+        android:name="com.abcdk.puuhdjncluk.DemoApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -10,7 +10,7 @@
         android:theme="@style/MainTheme">
 
         <activity
-            android:name=".SplashActivity"
+            android:name="com.abcdk.puuhdjncluk.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,21 +19,16 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".jdnbdjnfnbc_MainActivity2"
-            android:exported="false">
-
-        </activity>
 
         <activity
-            android:name=".BWeb1"
+            android:name="com.abcdk.puuhdjncluk.BWeb1"
             android:exported="false">
 
         </activity>
 
 
         <activity
-            android:name=".BWeb2"
+            android:name="com.abcdk.puuhdjncluk.BWeb2"
             android:exported="false">
 
         </activity>
