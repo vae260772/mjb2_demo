@@ -41,7 +41,7 @@ class FirstFragment() : Fragment() {
 
     open fun bindView(view: View) {
         baseRecyclerView = view.findViewById(R.id.recyclerView)
-        Log.d(TAG, "bindView baseRecyclerView=$baseRecyclerView")
+        //Log.d(TAG, "bindView baseRecyclerView=$baseRecyclerView")
     }
 
     open fun initRecycleView() {

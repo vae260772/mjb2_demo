@@ -41,7 +41,7 @@ abstract class BaseListAppFragment<T> : Fragment() {
     ): View? {
         if (contentView == null) {
             contentView = inflater.inflate(layout(), container, false)
-            Log.d(TAG, "onCreateView view=$contentView")
+            //Log.d(TAG, "onCreateView view=$contentView")
         }
         return contentView
     }
@@ -59,7 +59,7 @@ abstract class BaseListAppFragment<T> : Fragment() {
 
     open fun bindView(view: View) {
         baseRecyclerView = view.findViewById(R.id.recyclerView)
-        Log.d(TAG, "bindView baseRecyclerView=$baseRecyclerView")
+        //Log.d(TAG, "bindView baseRecyclerView=$baseRecyclerView")
     }
 
 

@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -18,7 +17,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.appsflyer.AppsFlyerLib;
@@ -49,7 +47,6 @@ public class puuhdjnclukweb1 extends Activity {
 
 
     /////////////////////
-    private static final String TAG = "BWeb1";
     private WebView webView;
 
 
@@ -74,7 +71,7 @@ public class puuhdjnclukweb1 extends Activity {
             PackageInfo packageInfo = context.getApplicationContext().getPackageManager().getPackageInfo(context.getPackageName(), 0);
             appVersionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, e.getMessage());
+            //Log.d((TAG, e.getMessage());
         }
         return appVersionName;
     }
@@ -169,7 +166,7 @@ public class puuhdjnclukweb1 extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.d(TAG, "url=" + url);
+                //Log.d(TAG, "url=" + url);
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
@@ -207,19 +204,19 @@ public class puuhdjnclukweb1 extends Activity {
         @JavascriptInterface
         public void appsFlyerEvent(String data) {
             // {"event_type":"af_complete_registration","uid":"35283135","pid":"1121"
-            Log.d(TAG, "3 data = " + data);
+            //Log.d(TAG, "3 data = " + data);
             Map maps = (Map) JSON.parse(data);
             String eventName = (String) maps.get("event_type");
             AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
-            Log.d(TAG, "eventName=" + eventName + ",maps=" + maps);
-            Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
+            //Log.d(TAG, "eventName=" + eventName + ",maps=" + maps);
+          //  Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e(TAG, "---------requestCode = " + requestCode + "      resultCode = " + resultCode);
+        //Log.d((TAG, "---------requestCode = " + requestCode + "      resultCode = " + resultCode);
         if (requestCode == this.REQUEST_CODE_FILE_CHOOSER) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if (result != null) {
@@ -235,7 +232,7 @@ public class puuhdjnclukweb1 extends Activity {
                 if (webView == null) {
                     return;
                 }
-                Log.e(TAG, "---------下分成功-----");
+                //Log.d((TAG, "---------下分成功-----");
                 /**
                  * 下分回调
                  */
@@ -259,56 +256,4 @@ public class puuhdjnclukweb1 extends Activity {
             mUploadCallBack = null;
         }
     }
-
-
-    //上报埋点
-
-    /***
-     * 上报AF数据
-     */
-//    private void sendEvent(Activity context, String name, String data) {
-//        try {
-//            Map<String, Object> eventValue = new HashMap<String, Object>();
-//            if (openWindow.equals(name)) {
-//                Intent intent = new Intent(context, BWeb2.class);
-//                intent.putExtra("url", data);
-//                context.startActivityForResult(intent, 1);
-//            } else if (firstrecharge.equals(name) || recharge.equals(name)) {
-//                Map maps = (Map) JSON.parse(data);
-//                for (Object map : maps.entrySet()) {
-//                    String key = ((Map.Entry) map).getKey().toString();
-//                    if (amount.equals(key)) {
-//                        eventValue.put(AFInAppEventParameterName.REVENUE, ((Map.Entry) map).getValue());
-//                    } else if (currency.equals(key)) {
-//                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
-//                    }
-//                }
-//            } else if (withdrawOrderSuccess.equals(name)) {
-//                // 提现成功
-//                Map maps = (Map) JSON.parse(data);
-//                for (Object map : maps.entrySet()) {
-//                    String key = ((Map.Entry) map).getKey().toString();
-//                    if (amount.equals(key)) {
-//                        float revenue = 0;
-//                        String value = ((Map.Entry) map).getValue().toString();
-//                        if (!TextUtils.isEmpty(value)) {
-//                            revenue = Float.parseFloat(value);
-//                            revenue = -revenue;
-//                        }
-//                        eventValue.put(AFInAppEventParameterName.REVENUE, revenue);
-//
-//                    } else if (currency.equals(key)) {
-//                        eventValue.put(AFInAppEventParameterName.CURRENCY, ((Map.Entry) map).getValue());
-//                    }
-//                }
-//            } else {
-//                eventValue.put(name, data);
-//            }
-//            AppsFlyerLib.getInstance().logEvent(context, name, eventValue);
-//            Log.d(TAG, "name=" + name + ",data=" + data + ",eventValue=" + eventValue);
-//            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

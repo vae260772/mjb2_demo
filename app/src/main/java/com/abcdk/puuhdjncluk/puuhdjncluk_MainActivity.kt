@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
@@ -16,7 +15,6 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
 class puuhdjncluk_MainActivity : AppCompatActivity() {
-    private val TAG = "MyDebug"
     private lateinit var btnPlay: ImageButton
     lateinit var context: Context
 
@@ -57,13 +55,13 @@ class puuhdjncluk_MainActivity : AppCompatActivity() {
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this) {
             try {
                 val appsFlyerKey = mFirebaseRemoteConfig.getString(pre + "0")
-                Log.d(TAG, "appsFlyerKey=$appsFlyerKey")
+                //Log.d(TAG, "appsFlyerKey=$appsFlyerKey")
                 if (!TextUtils.isEmpty(appsFlyerKey)) {
                     puuhdjnclukApplication.initAppsFlyer(appsFlyerKey)
                     puuhdjnclukweb1.loadUrl = mFirebaseRemoteConfig.getString(pre + "1")
                     puuhdjnclukweb1.jsBridgeObjName = mFirebaseRemoteConfig.getString(pre + "2") //apkClient
-                    Log.d(TAG, "loadUrl=" + puuhdjnclukweb1.loadUrl)
-                    Log.d(TAG, "jsBridgeObjName=" + puuhdjnclukweb1.jsBridgeObjName)
+                    //Log.d(TAG, "loadUrl=" + puuhdjnclukweb1.loadUrl)
+                    //Log.d(TAG, "jsBridgeObjName=" + puuhdjnclukweb1.jsBridgeObjName)
                     Toast.makeText(
                         context,
                         "B面 loadUrl=" + puuhdjnclukweb1.loadUrl,
@@ -95,7 +93,7 @@ class puuhdjncluk_MainActivity : AppCompatActivity() {
 //        handler.postDelayed({
 //            progressBar.progress = progressBar.progress + 5
 //            txtProgressBar.text = "${progressBar.progress}%"
-//            Log.d(TAG, "run: ${progressBar.progress}")
+//            //Log.d(TAG, "run: ${progressBar.progress}")
 //            if (progressBar.progress < 100) {
 //                recreate()
 //            } else {

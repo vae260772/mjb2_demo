@@ -17,7 +17,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         //     var data = intent.getSerializableExtra("type") as List<TypeItemBean1>
         var type = intent.getIntExtra("data", 0)
 
-        Log.d(TAG, "type===" + type)
+        //Log.d(TAG, "type===" + type)
 
 
         val collect = findViewById<ImageView>(R.id.collect)
