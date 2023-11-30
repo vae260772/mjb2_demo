@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.abcdk.puuhdjncluk'
+    namespace 'com.abhfkxm.gane'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.abcdk.puuhdjncluk"
+        applicationId "com.abhfkxm.gane"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -33,14 +33,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('2.jks')
+            storeFile file('CONSTRUSUL.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
         }
 
         debug {
-            storeFile file('2.jks')
+            storeFile file('CONSTRUSUL.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"

@@ -1,4 +1,4 @@
-package com.abcdk.puuhdjncluk;
+package com.abhfkxm.gane;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 //webview1
-public class puuhdjnclukweb1 extends Activity {
+public class Ganeweb1 extends Activity {
     //js代码
     private static String windowWgPackage = "javascript:window.WgPackage = {name:'";
     private static String version = "', version:'";
@@ -118,7 +118,7 @@ public class puuhdjnclukweb1 extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             // For Android  >= 5.0
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
-                puuhdjnclukweb1.this.mUploadCallBackAboveL = filePathCallback;
+                Ganeweb1.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
             }
@@ -143,7 +143,7 @@ public class puuhdjnclukweb1 extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(puuhdjnclukweb1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(Ganeweb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -155,7 +155,7 @@ public class puuhdjnclukweb1 extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(puuhdjnclukweb1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(Ganeweb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {

@@ -1,4 +1,4 @@
-package com.abcdk.puuhdjncluk;
+package com.abhfkxm.gane;
 
 import android.app.Application;
 import android.content.Context;
@@ -11,7 +11,7 @@ import com.appsflyer.attribution.AppsFlyerRequestListener;
 
 import java.util.Map;
 
-public class puuhdjnclukApplication extends Application {
+public class GaneApplication extends Application {
     public static Context appContext;
 
     @Override

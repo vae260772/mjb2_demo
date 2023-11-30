@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name="com.abcdk.puuhdjncluk.puuhdjnclukApplication"
+        android:name=".GaneApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher1"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/MainTheme">
-
+        android:theme="@style/Theme.Tic"
+        tools:replace="android:fullBackupContent"
+        tools:targetApi="31">
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjncluk_MainActivity"
+            android:name=".GaneGame"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name="com.abhfkxm.gane.GaneMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,23 +27,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjncluk_GameActivity"
-            android:exported="false">
-
-        </activity>
-
-        <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjnclukweb1"
+            android:name=".Ganeweb1"
             android:exported="false">
 
         </activity>
 
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjnclukweb2"
+            android:name=".Ganeweb2"
             android:exported="false">
 
         </activity>
+
+
     </application>
 
-</manifest>
+</manifest> 
