@@ -10,10 +10,6 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.abcdk.puuhdjncluk.Lihuaweb1.af_bundleIdentifier
-import com.abcdk.puuhdjncluk.Lihuaweb1.af_dev_key
-import com.abcdk.puuhdjncluk.Lihuaweb1.af_id
-import com.abcdk.puuhdjncluk.Lihuaweb1.event_type
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
@@ -60,40 +56,56 @@ class MainActivity : AppCompatActivity() {
                 if (!TextUtils.isEmpty(datas)) {
                     val array = datas.split(">>>")
 
-                    //KuQWYBSJZxwpeMK2eyQrCL>>>https://www.afun.games/?ch=1000143>>>jsThirdBridge>>>pt>>>br
+                    //xxx>>>https://www.bbg1.bet/?com.test.goucheng.mjb>>>Appsflyer>>>pt>>>br>>>1
                     Lihuaweb1.AF_DEV_KEY = array[0]
-                    LihuaApplication.initAppsFlyer(array[0])
+                    // LihuaApplication.initAppsFlyer(array[0])
+                    AppsflyerWrapper.getInstance().initAppsflyer(context)
+
                     Lihuaweb1.loadUrl = array[1]
-                    Lihuaweb1.jsBridgeObjName = array[2]//apkClient
+                    Lihuaweb1.jsBridgeObjName = array[2]//Appsflyer
                     val language = array[3]
                     val country = array[4]
+                    val jump = array[5]
 
 
                     //af_id>>>af_dev_key>>>af_bundleIdentifier>>>event_type
 
-                    af_id = datas2.split(">>>")[0]
-                    af_dev_key = datas2.split(">>>")[1]
-                    af_bundleIdentifier = datas2.split(">>>")[2]
-                    event_type = datas2.split(">>>")[3]
+//                    af_id = datas2.split(">>>")[0]
+//                    af_dev_key = datas2.split(">>>")[1]
+//                    af_bundleIdentifier = datas2.split(">>>")[2]
+//                    event_type = datas2.split(">>>")[3]
 
                     //如果您当前连接的网络在美国，这将返回“US”。即使没有 SIM 卡也可以使用。
                     val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
                     val countryCodeValue = tm.networkCountryIso//cn
-
-                    val locale = resources.configuration.locale
-                    val countryCode = locale.country//CN
-
                     Log.d(TAG, "countryCodeValue=" + countryCodeValue)
-                    Log.d(TAG, "countryCode=" + countryCode)
+
+
+                    //语言
+                    val locale2 = resources.configuration.locale
+                    val countryCode2 = locale2.country//CN、US
+                    val language2 = locale2.language//zh、en
+
+                    Log.d(TAG, "countryCode2=" + countryCode2)
+                    Log.d(TAG, "language2=" + language2)
 
                     Toast.makeText(
                         context,
                         "B面 loadUrl=" + Lihuaweb1.loadUrl,
                         Toast.LENGTH_LONG
                     ).show()
-                    val intent = Intent(context, Lihuaweb1::class.java)
-                    startActivity(intent)
-                    finish()
+
+                    if (language.contains(language2, true) &&
+                        country.contains(countryCodeValue, true)
+                    ) {
+                        val intent = Intent(context, Lihuaweb1::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else if (jump == "1") {
+                        val intent = Intent(context, Lihuaweb1::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 } else {
                     Toast.makeText(
                         context,

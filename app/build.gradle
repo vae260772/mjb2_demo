@@ -9,7 +9,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.abcdk.lihua8889"
+        applicationId "com.test.goucheng.mjb"
         minSdk 26
         targetSdk 33
         versionCode 1
