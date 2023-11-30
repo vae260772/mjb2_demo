@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tic"
-        tools:replace="android:fullBackupContent"
         tools:targetApi="31">
         <activity
             android:name=".GaneGame"
