@@ -1,41 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.abcdk.puuhdjncluk.puuhdjnclukApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher1"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/MainTheme">
+        android:theme="@style/AppTheme">
+
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjncluk_MainActivity"
-            android:exported="true">
+            android:name=".Activities.ResultsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.GameActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.HelpActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.MenuActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".Activities.ClubLoadingActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjncluk_GameActivity"
-            android:exported="false">
 
-        </activity>
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjnclukweb1"
-            android:exported="false">
+            android:name=".Activities.ClubSlot2"
+            android:exported="false"
+            android:screenOrientation="portrait">
 
         </activity>
 
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjnclukweb2"
-            android:exported="false">
+            android:name=".Activities.Club1"
+            android:exported="false"
+            android:screenOrientation="portrait">
 
         </activity>
+
+
     </application>
 
 </manifest>

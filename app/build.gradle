@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.abcdk.puuhdjncluk'
+    namespace 'com.fusrok.games'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.abcdk.puuhdjncluk"
+        applicationId "com.fusrok.games"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -33,14 +33,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('2.jks')
+            storeFile file('6.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
         }
 
         debug {
-            storeFile file('2.jks')
+            storeFile file('6.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
@@ -62,6 +62,8 @@ android {
     }
 
     buildFeatures {
+        viewBinding true
+        dataBinding true
         buildConfig true
     }
 
@@ -93,5 +95,14 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:32.5.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation("com.google.firebase:firebase-config")
+
+
+    //Styleable Toast Library
+    implementation 'com.muddzdev:styleabletoast:2.2.3'
+
+    // Push Down Animation
+    implementation('com.github.thekhaeng:pushdown-anim-click:1.1.1') {
+        exclude group: 'com.android.support'
+    }
 
 }
