@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="com.abcdk.puuhdjncluk.puuhdjnclukApplication"
+        android:name="com.abcdk.puuhdjncluk.LihuaApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher1"
         android:label="@string/app_name"
@@ -10,7 +10,7 @@
         android:theme="@style/MainTheme">
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjncluk_MainActivity"
+            android:name="com.abcdk.puuhdjncluk.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,24 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjncluk_GameActivity"
+            android:name="com.abcdk.puuhdjncluk.Lihuaweb1"
             android:exported="false">
 
         </activity>
 
-        <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjnclukweb1"
-            android:exported="false">
-
-        </activity>
-
-
-        <activity
-            android:name="com.abcdk.puuhdjncluk.puuhdjnclukweb2"
-            android:exported="false">
-
-        </activity>
     </application>
 
 </manifest>
