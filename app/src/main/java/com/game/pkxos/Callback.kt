@@ -1,19 +1,8 @@
-package com.game.pkxos;
+package com.game.pkxos
 
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager
 
-import java.util.List;
-
-public abstract class Callback {
-    public abstract void OnFinishListener();
-
-    private List<LinearLayoutManager> layoutManagers;
-
-    public void setLayoutManagers(List<LinearLayoutManager> layoutManagers) {
-        this.layoutManagers = layoutManagers;
-    }
-
-    public List<LinearLayoutManager> getLayoutManagers() {
-        return layoutManagers;
-    }
+abstract class Callback {
+    abstract fun OnFinishListener()
+    var layoutManagers: List<LinearLayoutManager>? = null
 }

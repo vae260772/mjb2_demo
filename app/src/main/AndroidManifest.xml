@@ -22,11 +22,11 @@
         </activity>
 
         <activity
-            android:name=".puuhdjnclukweb1"
+            android:name=".Slotweb1"
             android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <activity
-            android:name=".puuhdjnclukweb2"
+            android:name=".Slotweb2"
             android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <activity

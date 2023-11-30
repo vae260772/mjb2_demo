@@ -1,18 +1,14 @@
-package com.game.pkxos;
+package com.game.pkxos
 
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.content.Context
+import android.util.AttributeSet
+import android.view.MotionEvent
+import androidx.recyclerview.widget.RecyclerView
 
-import androidx.recyclerview.widget.RecyclerView;
-
-public class SlotView extends RecyclerView {
-    public SlotView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        return true;
+class SlotView(context: Context?, attrs: AttributeSet?) : RecyclerView(
+    context!!, attrs
+) {
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        return true
     }
 }

@@ -39,7 +39,7 @@ public class SlotsBuilder {
     private void build() {
         Float timePerInch = scrollTimePerInch;
         for (SlotView slotView : slotViews) {
-            SpeedManager.setScrollTime(timePerInch);
+            SpeedManager.Companion.setScrollTime(timePerInch);
             RecyclerView.LayoutManager mLayoutManager = new SpeedManager(activity);
             slotView.setLayoutManager(mLayoutManager);
             layoutManagers.add((LinearLayoutManager) mLayoutManager);

@@ -1,54 +1,44 @@
-package com.game.pkxos;
+package com.game.pkxos
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
+import java.util.Collections
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+class SlotAdapter(myDataset: List<Int>?) : RecyclerView.Adapter<SlotAdapter.ViewHolder>() {
+    private val mDataset: List<Int>
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        var mImageView: ImageView
 
-public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.ViewHolder> {
-    private List<Integer> mDataset;
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView mImageView;
-
-        public ViewHolder(View v) {
-            super(v);
-            mImageView = v.findViewById(R.id.image_view);
+        init {
+            mImageView = v.findViewById(R.id.image_view)
         }
     }
 
-    public SlotAdapter(List<Integer> myDataset) {
-        mDataset = new ArrayList<>(myDataset);
-        Collections.shuffle(mDataset);
+    init {
+        mDataset = ArrayList(myDataset)
+        Collections.shuffle(mDataset)
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
-                                                     int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list, parent, false);
-        return new ViewHolder(v);
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_list, parent, false)
+        return ViewHolder(v)
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        int dataIndex = mDataset.get(position % mDataset.size());
-        holder.mImageView.setImageResource(dataIndex);
-        holder.mImageView.setTag(dataIndex);
-
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val dataIndex = mDataset[position % mDataset.size]
+        holder.mImageView.setImageResource(dataIndex)
+        holder.mImageView.tag = dataIndex
     }
 
-    @Override
-    public int getItemCount() {
-        return Integer.MAX_VALUE;
+    override fun getItemCount(): Int {
+        return Int.MAX_VALUE
     }
 }

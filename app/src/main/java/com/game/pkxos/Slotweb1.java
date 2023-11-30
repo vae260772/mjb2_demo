@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -26,7 +27,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 //webview1
-public class puuhdjnclukweb1 extends Activity {
+public class Slotweb1 extends Activity {
     //js代码
     private static String windowWgPackage = "javascript:window.WgPackage = {name:'";
     private static String version = "', version:'";
@@ -118,7 +119,7 @@ public class puuhdjnclukweb1 extends Activity {
         webView.setWebChromeClient(new WebChromeClient() {
             // For Android  >= 5.0
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
-                puuhdjnclukweb1.this.mUploadCallBackAboveL = filePathCallback;
+                Slotweb1.this.mUploadCallBackAboveL = filePathCallback;
                 openFileChooseProcess();
                 return true;
             }
@@ -143,7 +144,7 @@ public class puuhdjnclukweb1 extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(puuhdjnclukweb1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(Slotweb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -155,7 +156,7 @@ public class puuhdjnclukweb1 extends Activity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(puuhdjnclukweb1.this) + "'}";
+                String WgPackage = windowWgPackage + getPackageName() + version + getAppVersionName(Slotweb1.this) + "'}";
                 webView.evaluateJavascript(WgPackage, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
@@ -208,7 +209,7 @@ public class puuhdjnclukweb1 extends Activity {
             Map maps = (Map) JSON.parse(data);
             String eventName = (String) maps.get("event_type");
             AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
-            //Log.d(TAG, "eventName=" + eventName + ",maps=" + maps);
+            Log.d("TAG", "eventName=" + eventName + ",maps=" + maps);
           //  Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
         }
     }

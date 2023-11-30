@@ -1,51 +1,51 @@
-package com.game.pkxos;
+package com.game.pkxos
 
-import android.content.Context;
-import android.graphics.PointF;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
+import android.content.Context
+import android.graphics.PointF
+import android.util.AttributeSet
+import android.util.DisplayMetrics
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
+class SpeedManager : LinearLayoutManager {
+    internal constructor(context: Context?) : super(context)
+    constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+        context,
+        orientation,
+        reverseLayout
+    )
 
-public class SpeedManager extends LinearLayoutManager {
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    private static float scrollTime;
+    override fun smoothScrollToPosition(
+        recyclerView: RecyclerView,
+        state: RecyclerView.State,
+        position: Int
+    ) {
+        val linearSmoothScroller: LinearSmoothScroller =
+            object : LinearSmoothScroller(recyclerView.context) {
+                override fun computeScrollVectorForPosition(targetPosition: Int): PointF? {
+                    return this@SpeedManager.computeScrollVectorForPosition(targetPosition)
+                }
 
-    SpeedManager(Context context) {
-        super(context);
-    }
-
-    public static void setScrollTime(Float scrollTime) {
-        SpeedManager.scrollTime = scrollTime;
-    }
-
-    public SpeedManager(Context context, int orientation, boolean reverseLayout) {
-        super(context, orientation, reverseLayout);
-    }
-
-    public SpeedManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
-    @Override
-    public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
-
-        final LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(recyclerView.getContext()) {
-
-            @Override
-            public PointF computeScrollVectorForPosition(int targetPosition) {
-                return SpeedManager.this.computeScrollVectorForPosition(targetPosition);
+                override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
+                    return scrollTime
+                }
             }
+        linearSmoothScroller.targetPosition = position
+        startSmoothScroll(linearSmoothScroller)
+    }
 
-            @Override
-            protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-                return scrollTime;
-            }
-        };
-
-        linearSmoothScroller.setTargetPosition(position);
-        startSmoothScroll(linearSmoothScroller);
+    companion object {
+        private var scrollTime = 0f
+        fun setScrollTime(scrollTime: Float) {
+            Companion.scrollTime = scrollTime
+        }
     }
 }
