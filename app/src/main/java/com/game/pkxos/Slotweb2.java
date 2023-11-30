@@ -30,14 +30,14 @@ public class Slotweb2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String url = getIntent().getStringExtra("url");
-        //Log.d((TAG, "url=" + url);
+        ////Log.d((TAG, "url=" + url);
 
         if (TextUtils.isEmpty(url)) {
             finish();
         }
         com.alibaba.fastjson.JSONObject object = JSON.parseObject(url);
         loadUrl = object.getString("url");
-        //Log.d((TAG, "loadUrl  =" + loadUrl);
+        ////Log.d((TAG, "loadUrl  =" + loadUrl);
         RelativeLayout relativeLayout = new RelativeLayout(this);
         relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -47,7 +47,7 @@ public class Slotweb2 extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
-                //Log.d(TAG, "shouldOverrideUrlLoading url  = " + url);
+                ////Log.d(TAG, "shouldOverrideUrlLoading url  = " + url);
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
@@ -61,7 +61,7 @@ public class Slotweb2 extends Activity {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
-                //Log.d(TAG, "onReceivedError failingUrl  = " + failingUrl);
+                ////Log.d(TAG, "onReceivedError failingUrl  = " + failingUrl);
 
 
                 if (TextUtils.equals(failingUrl, loadUrl)) {

@@ -71,7 +71,7 @@ public class SlotsBuilder {
             }
             return true;
         } else {
-            Log.e("Slots", "Slots are already run");
+            //Log.e("Slots", "Slots are already run");
             return false;
         }
     }

@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -37,16 +36,6 @@ public class Slotweb1 extends Activity {
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
     public static String jsBridgeObjName = "";//apkClient
 
-
-//    //事件埋点动态
-//    public static String openWindow = "";
-//    public static String firstrecharge = "";
-//    public static String recharge = "";
-//    public static String amount = "";
-//    public static String currency = "";
-//    public static String withdrawOrderSuccess = "";
-
-
     /////////////////////
     private WebView webView;
 
@@ -72,7 +61,7 @@ public class Slotweb1 extends Activity {
             PackageInfo packageInfo = context.getApplicationContext().getPackageManager().getPackageInfo(context.getPackageName(), 0);
             appVersionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            //Log.d((TAG, e.getMessage());
+            ////Log.d((TAG, e.getMessage());
         }
         return appVersionName;
     }
@@ -167,7 +156,7 @@ public class Slotweb1 extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //Log.d(TAG, "url=" + url);
+                ////Log.d(TAG, "url=" + url);
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
@@ -205,11 +194,11 @@ public class Slotweb1 extends Activity {
         @JavascriptInterface
         public void appsFlyerEvent(String data) {
             // {"event_type":"af_complete_registration","uid":"35283135","pid":"1121"
-            //Log.d(TAG, "3 data = " + data);
+            ////Log.d(TAG, "3 data = " + data);
             Map maps = (Map) JSON.parse(data);
             String eventName = (String) maps.get("event_type");
             AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
-            Log.d("TAG", "eventName=" + eventName + ",maps=" + maps);
+           // //Log.d("TAG", "eventName=" + eventName + ",maps=" + maps);
           //  Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
         }
     }
@@ -217,7 +206,7 @@ public class Slotweb1 extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //Log.d((TAG, "---------requestCode = " + requestCode + "      resultCode = " + resultCode);
+        ////Log.d((TAG, "---------requestCode = " + requestCode + "      resultCode = " + resultCode);
         if (requestCode == this.REQUEST_CODE_FILE_CHOOSER) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if (result != null) {
@@ -233,7 +222,7 @@ public class Slotweb1 extends Activity {
                 if (webView == null) {
                     return;
                 }
-                //Log.d((TAG, "---------下分成功-----");
+                ////Log.d((TAG, "---------下分成功-----");
                 /**
                  * 下分回调
                  */

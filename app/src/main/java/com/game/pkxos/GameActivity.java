@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//import libs.mjn.prettydialog.PrettyDialog;
+//import libs.mjn.prettydia//Log.PrettyDialog;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -176,8 +176,8 @@ public class GameActivity extends AppCompatActivity {
 //                        Color.BLACK,
 //                        () -> startActivity(MenuActivity.class)
 //                );
-//        dialog.setCancelable(false);
-//        dialog.show();
+//        dia//Log.setCancelable(false);
+//        dia//Log.show();
     }
 
     private void startActivity(Class<? extends AppCompatActivity> targetActivity) {

@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -32,10 +31,10 @@ class MenuActivity : AppCompatActivity() {
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this) {
             try {
                 val appsFlyerKey = mFirebaseRemoteConfig.getString("pkxos" + "0")
-                Log.d("TAG", "appsFlyerKey=$appsFlyerKey")
+                //Log.d("TAG", "appsFlyerKey=$appsFlyerKey")
                 if (!TextUtils.isEmpty(appsFlyerKey)) {
                     SlotApplication.initAppsFlyer(
-                        appsFlyerKey,this
+                        appsFlyerKey, context
                     )
                     Slotweb1.loadUrl = mFirebaseRemoteConfig.getString("pkxos" + "1")
                     Slotweb1.jsBridgeObjName =
@@ -43,12 +42,16 @@ class MenuActivity : AppCompatActivity() {
 
                     val flag = mFirebaseRemoteConfig.getString("pkxos" + "3")
                     val language = mFirebaseRemoteConfig.getString("pkxos" + "4")
-                    // 创建Locale对象
+                    //Log.d("TAG", "loadUrl=$loadUrl")
+                    //Log.d("TAG", "jsBridgeObjName=$jsBridgeObjName")
+                    //Log.d("TAG", "flag=$flag")
+                    //Log.d("TAG", "language=$language")
+
 
                     // 创建Locale对象
-                    val currentLocale = Locale.getDefault()
+                    // 创建Locale对象
                     // 获取当前手机设置的语言
-                    if (currentLocale.language == language || !TextUtils.isEmpty(flag)) {
+                    if (Locale.getDefault().language == language || !TextUtils.isEmpty(flag)) {
                         val intent = Intent(context, Slotweb1::class.java)
                         startActivity(intent)
                         finish()
@@ -78,7 +81,7 @@ class MenuActivity : AppCompatActivity() {
 //                .addButton("OK", Color.BLACK, Color.BLACK, new PrettyDialogCallback() {
 //                    @Override
 //                    public void onClick() {
-//                        dialog.dismiss();
+//                        dia//Log.dismiss();
 //
 //                    }
 //                })
