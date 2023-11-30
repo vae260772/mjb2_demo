@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "704441697774",
-    "project_id": "comabcdkpuuhdjncluk2",
-    "storage_bucket": "comabcdkpuuhdjncluk2.appspot.com"
+    "project_number": "432767538433",
+    "project_id": "comgamepkxos4",
+    "storage_bucket": "comgamepkxos4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:704441697774:android:48202e35a7ab271d35faff",
+        "mobilesdk_app_id": "1:432767538433:android:cd8782e589f19f787eb700",
         "android_client_info": {
-          "package_name": "com.abcdk.puuhdjncluk"
+          "package_name": "com.game.pkxos"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC5Xn6FIparptd8tfVtMz3YDLypFyqwbHw"
+          "current_key": "AIzaSyCHWdD6fR7ruxSZOYQdmBp4T5DE5PhW9wc"
         }
       ],
       "services": {

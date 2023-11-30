@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">MAJESTIC FORTUNE CLUB</string>
+    <string name="app_name">Manufacturing: fruit machines</string>
+
+    <string name="rules">At the beginning of the game, players receive 500 points.
+2. Press the "Bet" button to select a bet.
+3. The gain size of the bet
+4. At the end of the game, press the menu button or the player runs out of funds</string>
+
+    <string name="rules_title">rules</string>
+    <string name="play_btn_title">play</string>
+    <string name="menu_btn_title">menu</string>
+    <string name="scores_dialog_title">scores</string>
+    <string name="scores_dialog_text">Your scores are already full</string>
+    <string name="rules_btn_text">rules</string>
+    <string name="scores">scores</string>
+    <string name="bet">bet</string>
+    <string name="bet_btn_title">Rate</string>
+    <string name="spin_btn_title">spin</string>
+
 </resources>

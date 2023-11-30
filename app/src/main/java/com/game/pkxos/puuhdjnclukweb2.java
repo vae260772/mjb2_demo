@@ -1,4 +1,4 @@
-package com.abcdk.puuhdjncluk;
+package com.game.pkxos;
 
 import android.app.Activity;
 import android.content.Intent;
