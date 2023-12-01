@@ -20,11 +20,15 @@
         </activity>
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.LihuaBWebActivity"
+            android:name="com.abcdk.puuhdjncluk.Lihua_BWebActivity"
             android:exported="false">
 
         </activity>
+        <activity
+            android:name="com.abcdk.puuhdjncluk.LihuaA_Activity"
+            android:exported="false">
 
+        </activity>
     </application>
 
 </manifest>

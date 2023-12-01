@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 //webview1
-public class LihuaBWebActivity extends Activity {
+public class Lihua_BWebActivity extends Activity {
     //b面链接
     public static String loadUrl = "";//https://www.afun.games/?ch=10001430
     public static String jsBridgeObjName = "";//jsThirdBridge
