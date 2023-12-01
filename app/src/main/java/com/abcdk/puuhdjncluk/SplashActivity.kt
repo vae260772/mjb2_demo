@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.abcdk.puuhdjncluk.Lihua_BWebActivity.af_bundleIdentifier
@@ -25,22 +23,14 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
         context = this
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
-
-        val decorView = window.decorView
-        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        getData()
     }
 
-    override fun onStart() {
-        super.onStart()
-//跳转
+    fun getData() {
         //跳转
         val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
         val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds((0).toLong()) //2次成功拉取配置时间间隔：20天
+            .setMinimumFetchIntervalInSeconds((3600 * 24 * 30).toLong()) //2次成功拉取配置时间间隔：30天
             //.setMinimumFetchIntervalInSeconds(0)
             .build()
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings)
