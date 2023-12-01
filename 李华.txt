@@ -1,0 +1,5 @@
+李华-发包&配置	10	"af+jsThirdBridge；
+js方法appsFlyerEvent+getSdkData+openAppBrowser；"	af事件；	"KuQWYBSJZxwpeMK2eyQrCL>>>https://www.afun.games/?ch=1000143>>>jsThirdBridge>>>pt>>>br
+
+
+af_id>>>af_dev_key>>>af_bundleIdentifier>>>event_type"	https://docs.google.com/document/d/1tzHGpK1nWj5V-9D-ccM0CyPAUVpBTJYM/edit?pli=1	validator.antillephone.com
