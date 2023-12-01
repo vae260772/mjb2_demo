@@ -52,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
 
                     //KuQWYBSJZxwpeMK2eyQrCL>>>https://www.afun.games/?ch=1000143>>>jsThirdBridge>>>pt>>>br>>>0
                     Lihua_BWebActivity.AF_DEV_KEY = array[0]
-                    LihuaApplication.initAppsFlyer(array[0])
+                    Lihua_Application.initAppsFlyer(array[0])
                     Lihua_BWebActivity.loadUrl = array[1]
                     Lihua_BWebActivity.jsBridgeObjName = array[2]//jsThirdBridge
                     val language = array[3]

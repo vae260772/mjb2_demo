@@ -12,7 +12,7 @@ import com.appsflyer.attribution.AppsFlyerRequestListener;
 
 import java.util.Map;
 
-public class LihuaApplication extends Application {
+public class Lihua_Application extends Application {
     public static Context appContext;
     public static String TAG = "puuhdjnclukApplication";
 
