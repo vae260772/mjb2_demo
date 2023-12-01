@@ -10,7 +10,7 @@
         android:theme="@style/MainTheme">
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.MainActivity"
+            android:name="com.abcdk.puuhdjncluk.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name="com.abcdk.puuhdjncluk.Lihuaweb1"
+            android:name="com.abcdk.puuhdjncluk.LihuaBWebActivity"
             android:exported="false">
 
         </activity>

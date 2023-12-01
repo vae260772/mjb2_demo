@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 //webview1
-public class Lihuaweb1 extends Activity {
+public class LihuaBWebActivity extends Activity {
     //b面链接
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
     public static String jsBridgeObjName = "";//apkClient

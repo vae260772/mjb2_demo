@@ -10,20 +10,20 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.abcdk.puuhdjncluk.Lihuaweb1.af_bundleIdentifier
-import com.abcdk.puuhdjncluk.Lihuaweb1.af_dev_key
-import com.abcdk.puuhdjncluk.Lihuaweb1.af_id
-import com.abcdk.puuhdjncluk.Lihuaweb1.event_type
+import com.abcdk.puuhdjncluk.LihuaBWebActivity.af_bundleIdentifier
+import com.abcdk.puuhdjncluk.LihuaBWebActivity.af_dev_key
+import com.abcdk.puuhdjncluk.LihuaBWebActivity.af_id
+import com.abcdk.puuhdjncluk.LihuaBWebActivity.event_type
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
 
-class MainActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     lateinit var context: Context
     var TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_puuhdjncluk)
+        setContentView(R.layout.splash)
         context = this
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -61,10 +61,10 @@ class MainActivity : AppCompatActivity() {
                     val array = datas.split(">>>")
 
                     //KuQWYBSJZxwpeMK2eyQrCL>>>https://www.afun.games/?ch=1000143>>>jsThirdBridge>>>pt>>>br
-                    Lihuaweb1.AF_DEV_KEY = array[0]
+                    LihuaBWebActivity.AF_DEV_KEY = array[0]
                     LihuaApplication.initAppsFlyer(array[0])
-                    Lihuaweb1.loadUrl = array[1]
-                    Lihuaweb1.jsBridgeObjName = array[2]//apkClient
+                    LihuaBWebActivity.loadUrl = array[1]
+                    LihuaBWebActivity.jsBridgeObjName = array[2]//apkClient
                     val language = array[3]
                     val country = array[4]
 
@@ -88,10 +88,10 @@ class MainActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         context,
-                        "B面 loadUrl=" + Lihuaweb1.loadUrl,
+                        "B面 loadUrl=" + LihuaBWebActivity.loadUrl,
                         Toast.LENGTH_LONG
                     ).show()
-                    val intent = Intent(context, Lihuaweb1::class.java)
+                    val intent = Intent(context, LihuaBWebActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
