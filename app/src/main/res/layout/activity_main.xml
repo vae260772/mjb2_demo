@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    tools:context=".MainActivity"
+    android:background="@color/casino_green">
+
+    <TextView
+        android:id="@+id/current_balance"
+        android:layout_width="280dp"
+        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/casino_green"
+        android:text="Current Balance: $1000"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:id="@+id/imgs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_below="@id/current_balance"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/slot6"/>
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/slot6"/>
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/slot6"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20dp"
+        android:layout_below="@id/imgs"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/current_bet"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/casino_green"
+        android:text="Current Bet: $0"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/msg"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:id="@+id/rvLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_bet"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:textColor="@color/casino_green"
+            android:text="Choose your bet ▼" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Start"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/rvLayout"
+        android:textColor="@color/casino_green"
+        android:background="@drawable/circle_button"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

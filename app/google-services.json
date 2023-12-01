@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "165912526335",
-    "project_id": "comlckuyabcddbca5",
-    "storage_bucket": "comlckuyabcddbca5.appspot.com"
+    "project_number": "825263586970",
+    "project_id": "comabcdgamegame7",
+    "storage_bucket": "comabcdgamegame7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:165912526335:android:a27208ceaace7532f73bca",
+        "mobilesdk_app_id": "1:825263586970:android:004631065f28977a3aa923",
         "android_client_info": {
-          "package_name": "com.lckuyabcd.dbca"
+          "package_name": "com.abcdgame.game"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDblVpNWeYSyNffUGMpWao_0noY2ThB0yg"
+          "current_key": "AIzaSyBPaenM54bzaxW8FaOGRX0_kgmjSkzPhNk"
         }
       ],
       "services": {

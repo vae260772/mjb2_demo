@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.lckuyabcd.dbca'
+    namespace 'com.abcdgame.game'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.lckuyabcd.dbca"
+        applicationId "com.abcdgame.game"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -33,14 +33,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('Easy Puzzle.jks')
+            storeFile file('Diamond.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
         }
 
         debug {
-            storeFile file('Easy Puzzle.jks')
+            storeFile file('Diamond.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
@@ -104,5 +104,6 @@ dependencies {
     implementation('com.github.thekhaeng:pushdown-anim-click:1.1.1') {
         exclude group: 'com.android.support'
     }
+    implementation 'androidx.preference:preference:1.2.1'
 
 }
