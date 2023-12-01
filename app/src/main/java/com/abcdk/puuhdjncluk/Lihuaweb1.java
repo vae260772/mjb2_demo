@@ -27,8 +27,8 @@ import java.util.Map;
 //webview1
 public class Lihuaweb1 extends Activity {
     //b面链接
-    public static String loadUrl = "";//https://brlfortune.com/?cid=444216
-    public static String jsBridgeObjName = "";//apkClient
+    public static String loadUrl = "";//https://www.afun.games/?ch=10001430
+    public static String jsBridgeObjName = "";//jsThirdBridge
     private WebView webView;
 
 

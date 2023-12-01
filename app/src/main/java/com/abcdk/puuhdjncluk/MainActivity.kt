@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                     Lihuaweb1.AF_DEV_KEY = array[0]
                     LihuaApplication.initAppsFlyer(array[0])
                     Lihuaweb1.loadUrl = array[1]
-                    Lihuaweb1.jsBridgeObjName = array[2]//apkClient
+                    Lihuaweb1.jsBridgeObjName = array[2]//jsThirdBridge
                     val language = array[3]
                     val country = array[4]
 
