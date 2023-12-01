@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.fusrok.games'
+    namespace 'com.lckuyabcd.dbca'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.fusrok.games"
+        applicationId "com.lckuyabcd.dbca"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -33,14 +33,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('6.jks')
+            storeFile file('Easy Puzzle.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
         }
 
         debug {
-            storeFile file('6.jks')
+            storeFile file('Easy Puzzle.jks')
             storePassword "123456"
             keyAlias "key0"
             keyPassword "123456"
@@ -48,7 +48,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release

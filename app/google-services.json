@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "321899379171",
-    "project_id": "comfusrokgames6",
-    "storage_bucket": "comfusrokgames6.appspot.com"
+    "project_number": "165912526335",
+    "project_id": "comlckuyabcddbca5",
+    "storage_bucket": "comlckuyabcddbca5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:321899379171:android:eedaaf3380dfe86cd408d6",
+        "mobilesdk_app_id": "1:165912526335:android:a27208ceaace7532f73bca",
         "android_client_info": {
-          "package_name": "com.fusrok.games"
+          "package_name": "com.lckuyabcd.dbca"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCX3lfoP51WBCzogI0LQz2tI-HSGUXqiAc"
+          "current_key": "AIzaSyDblVpNWeYSyNffUGMpWao_0noY2ThB0yg"
         }
       ],
       "services": {
