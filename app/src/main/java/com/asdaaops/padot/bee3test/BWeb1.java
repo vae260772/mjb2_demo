@@ -1,4 +1,4 @@
-package com.ashdot.safeount;
+package com.asdaaops.padot.bee3test;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

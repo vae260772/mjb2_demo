@@ -1,40 +1,21 @@
 {
   "project_info": {
-    "project_number": "957246410506",
-    "project_id": "prozi1",
-    "storage_bucket": "prozi1.appspot.com"
+    "project_number": "971937856767",
+    "project_id": "kinga-mjb",
+    "storage_bucket": "kinga-mjb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:957246410506:android:b8c27fe1d4ecad3c0374f3",
+        "mobilesdk_app_id": "1:971937856767:android:1b5a40188a276849dba0ca",
         "android_client_info": {
-          "package_name": "com.alesf.prozi1"
+          "package_name": "com.asdaaops.padot.bee3test"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAAhbPGXSTwP_PmpuwuKsycn42b7NQkWtw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:957246410506:android:dc9418063147db090374f3",
-        "android_client_info": {
-          "package_name": "com.hdknf.jdnbdjnfnbc"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAAhbPGXSTwP_PmpuwuKsycn42b7NQkWtw"
+          "current_key": "AIzaSyCEUX-LTOoFOuhEcrdTK60iWFI7mcqe3bc"
         }
       ],
       "services": {
@@ -43,6 +24,7 @@
         }
       }
     }
+
   ],
   "configuration_version": "1"
 }

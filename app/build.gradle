@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.hdknf.jdnbdjnfnbc"
+        applicationId "com.asdaaops.padot.bee3test"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -80,9 +80,6 @@ dependencies {
     ////   implementation("org.greenrobot:eventbus:3.3.1")
     implementation 'com.appsflyer:af-android-sdk:6.12.2'
     implementation "com.android.installreferrer:installreferrer:2.2"
-
-
-/////
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     // Import the Firebase BoM

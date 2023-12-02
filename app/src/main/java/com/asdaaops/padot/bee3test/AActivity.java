@@ -1,9 +1,11 @@
-package com.ashdot.safeount;
+package com.asdaaops.padot.bee3test;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+
+import com.ashdot.safeount.R;
 
 /* loaded from: classes.dex */
 public class AActivity extends Activity {
