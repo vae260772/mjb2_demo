@@ -246,6 +246,6 @@
 -keepclassmembers enum * { *; }
 
 # Application classes that will be serialized/deserialized over Gson
-##---------------End: proguard configuration for Gson  ----------
 #这句非常重要，主要是滤掉使用gson的bean文件不进行混淆编译，具体根据不同的包名进行调整
 -keep class com.xxxxx.xxxxx.bean.** {*;}
+##---------------End: proguard configuration for Gson  ----------
