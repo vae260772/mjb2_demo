@@ -3,17 +3,23 @@ plugins {
     id 'com.google.gms.google-services'
     id 'org.jetbrains.kotlin.android'
 }
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "${variant.applicationId}_${variant.name}_${variant.versionName}_${variant.versionCode}.apk"
+    }
+}
 
 android {
     namespace 'com.abcdgame.game'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.abcdgame.game"
+        applicationId "om.lemon.laoban.debug"
         minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        setProperty("archivesBaseName", "${applicationId}_v${versionName}_${versionCode}")
     }
 
     buildTypes {
@@ -86,24 +92,10 @@ dependencies {
     ////   implementation("org.greenrobot:eventbus:3.3.1")
     implementation 'com.appsflyer:af-android-sdk:6.12.2'
     implementation "com.android.installreferrer:installreferrer:2.2"
-
-
-/////
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:32.5.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation("com.google.firebase:firebase-config")
-
-
-    //Styleable Toast Library
-    implementation 'com.muddzdev:styleabletoast:2.2.3'
-
-    // Push Down Animation
-    implementation('com.github.thekhaeng:pushdown-anim-click:1.1.1') {
-        exclude group: 'com.android.support'
-    }
-    implementation 'androidx.preference:preference:1.2.1'
 
 }

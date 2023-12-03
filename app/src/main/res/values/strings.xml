@@ -1,10 +1,5 @@
 <resources>
-    <string name="app_name">Diamond slot machine
+    <string name="app_name">lemon老板
     </string>
-    <string name="title_activity_settings">Settings</string>
-
-    <!-- Preference Titles -->
-    <string name="difficulty_header">Difficulty</string>
-    <string name="easy_mode">Easy Mode</string>
 
 </resources>

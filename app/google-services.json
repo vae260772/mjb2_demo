@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "825263586970",
-    "project_id": "comabcdgamegame7",
-    "storage_bucket": "comabcdgamegame7.appspot.com"
+    "project_number": "26605791958",
+    "project_id": "lemon-mjb",
+    "storage_bucket": "lemon-mjb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:825263586970:android:004631065f28977a3aa923",
+        "mobilesdk_app_id": "1:26605791958:android:12c186afd1afa3a85d7777",
         "android_client_info": {
-          "package_name": "com.abcdgame.game"
+          "package_name": "om.lemon.laoban.debug"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBPaenM54bzaxW8FaOGRX0_kgmjSkzPhNk"
+          "current_key": "AIzaSyAGNDkWF1m2dYa4twE89DkDnmo6XyUIOHo"
         }
       ],
       "services": {
