@@ -156,12 +156,12 @@ public class Lihua_BWebActivity extends Activity {
             AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventType, hashMap, new AppsFlyerRequestListener() {
                 @Override
                 public void onSuccess() {
-                    Toast.makeText(getApplicationContext(), finalEventType + "上报完成", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), finalEventType, Toast.LENGTH_LONG).show();
                 }
 
                 @Override
                 public void onError(int i, @NonNull String s) {
-
+                    Log.e(TAG, "onError s=" + s);
                 }
             });
         }

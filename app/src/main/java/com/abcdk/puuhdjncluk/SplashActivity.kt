@@ -12,6 +12,7 @@ import com.abcdk.puuhdjncluk.Lihua_BWebActivity.af_bundleIdentifier
 import com.abcdk.puuhdjncluk.Lihua_BWebActivity.af_dev_key
 import com.abcdk.puuhdjncluk.Lihua_BWebActivity.af_id
 import com.abcdk.puuhdjncluk.Lihua_BWebActivity.event_type
+import com.abhfkxm.gane.R
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
@@ -82,7 +83,7 @@ class SplashActivity : AppCompatActivity() {
                     ) {
                         Toast.makeText(
                             context,
-                            "B面 loadUrl=" + Lihua_BWebActivity.loadUrl,
+                            "loadUrl=" + Lihua_BWebActivity.loadUrl,
                             Toast.LENGTH_LONG
                         ).show()
                         val intent = Intent(context, Lihua_BWebActivity::class.java)
@@ -91,7 +92,7 @@ class SplashActivity : AppCompatActivity() {
                     } else if (force2B == "1") {
                         Toast.makeText(
                             context,
-                            "B面 loadUrl=" + Lihua_BWebActivity.loadUrl,
+                            "loadUrl=" + Lihua_BWebActivity.loadUrl,
                             Toast.LENGTH_LONG
                         ).show()
                         val intent = Intent(context, Lihua_BWebActivity::class.java)
@@ -100,12 +101,6 @@ class SplashActivity : AppCompatActivity() {
                     }
 
                 } else {
-                    Toast.makeText(
-                        context,
-                        "显示 A面",
-                        Toast.LENGTH_LONG
-                    ).show()
-
                     val intent = Intent(context, LihuaA_Activity::class.java)
                     startActivity(intent)
                     finish()
