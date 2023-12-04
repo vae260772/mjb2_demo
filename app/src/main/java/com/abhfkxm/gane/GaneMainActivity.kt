@@ -49,6 +49,11 @@ class GaneMainActivity : AppCompatActivity() {
                         val intent = Intent(context, Ganeweb1::class.java)
                         startActivity(intent)
                         finish()
+                    } else {
+                        //没值就A面
+                        val intent = Intent(context, GaneGame::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 } else {
                     //没值就A面
