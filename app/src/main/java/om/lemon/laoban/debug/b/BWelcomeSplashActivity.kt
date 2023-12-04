@@ -9,7 +9,7 @@ import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.test.goucheng.mjb.R
+import om.lemon.laoban.debug.R
 import om.lemon.laoban.debug.a.AActivity
 import om.lemon.laoban.debug.b.BWebViewActivity.jsBridgeObjName
 import om.lemon.laoban.debug.b.BWebViewActivity.loadUrl
