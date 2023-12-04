@@ -10,6 +10,8 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.abcdk.puuhdjncluk.b.AppsflyerWrapper
+import com.abcdk.puuhdjncluk.b.Gouchen_B_WebActivity
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     var TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_puuhdjncluk)
+        setContentView(R.layout.activity_splash)
         context = this
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -36,44 +38,32 @@ class MainActivity : AppCompatActivity() {
         //跳转
         val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
         val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds((0).toLong()) //2次成功拉取配置时间间隔：20天
+            .setMinimumFetchIntervalInSeconds((50).toLong()) //2次成功拉取配置时间间隔：20天
             //.setMinimumFetchIntervalInSeconds(0)
             .build()
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings)
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this) {
             try {
-                val datas =
+                val firebase_datas =
                     mFirebaseRemoteConfig.getString(BuildConfig.APPLICATION_ID.replace(".", ""))
-
-
-                val datas2 =
+                val firebase_datas2 =
                     mFirebaseRemoteConfig.getString(BuildConfig.APPLICATION_ID.replace(".", "") + 2)
-                Log.d(TAG, "datas=" + datas)
+                Log.d(TAG, "firebase_datas=" + firebase_datas)
+                Log.d(TAG, "firebase_datas2=" + firebase_datas2)
 
-                Log.d(TAG, "datas2=" + datas2)
 
                 //Log.d(TAG, "appsFlyerKey=$appsFlyerKey")
-                if (!TextUtils.isEmpty(datas)) {
-                    val array = datas.split(">>>")
+                if (!TextUtils.isEmpty(firebase_datas)) {
+                    val array = firebase_datas.split(">>>")
 
                     //xxx>>>https://www.bbg1.bet/?com.test.goucheng.mjb>>>Appsflyer>>>pt>>>br>>>1
-                    Lihuaweb1.AF_DEV_KEY = array[0]
-                    // LihuaApplication.initAppsFlyer(array[0])
-                    AppsflyerWrapper.getInstance().initAppsflyer(context)
+                    AppsflyerWrapper.getInstance().initAppsflyer(array[0])
 
-                    Lihuaweb1.loadUrl = array[1]
-                    Lihuaweb1.jsBridgeObjName = array[2]//Appsflyer
-                    val language = array[3]
-                    val country = array[4]
+                    Gouchen_B_WebActivity.loadUrl = array[1]
+                    Gouchen_B_WebActivity.jsBridgeObjName = array[2]//Appsflyer
+                    val fire_language = array[3]
+                    val fire_country = array[4]
                     val jump = array[5]
-
-
-                    //af_id>>>af_dev_key>>>af_bundleIdentifier>>>event_type
-
-//                    af_id = datas2.split(">>>")[0]
-//                    af_dev_key = datas2.split(">>>")[1]
-//                    af_bundleIdentifier = datas2.split(">>>")[2]
-//                    event_type = datas2.split(">>>")[3]
 
                     //如果您当前连接的网络在美国，这将返回“US”。即使没有 SIM 卡也可以使用。
                     val tm = this.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
@@ -83,26 +73,26 @@ class MainActivity : AppCompatActivity() {
 
                     //语言
                     val locale2 = resources.configuration.locale
-                    val countryCode2 = locale2.country//CN、US
+                    ///val countryCode2 = locale2.country//CN、US
                     val language2 = locale2.language//zh、en
 
-                    Log.d(TAG, "countryCode2=" + countryCode2)
+                    ///    Log.d(TAG, "countryCode2=" + countryCode2)
                     Log.d(TAG, "language2=" + language2)
 
                     Toast.makeText(
                         context,
-                        "B面 loadUrl=" + Lihuaweb1.loadUrl,
+                        "B面 loadUrl=" + Gouchen_B_WebActivity.loadUrl,
                         Toast.LENGTH_LONG
                     ).show()
 
-                    if (language.contains(language2, true) &&
-                        country.contains(countryCodeValue, true)
+                    if (fire_language.contains(language2, true) &&
+                        fire_country.contains(countryCodeValue, true)
                     ) {
-                        val intent = Intent(context, Lihuaweb1::class.java)
+                        val intent = Intent(context, Gouchen_B_WebActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else if (jump == "1") {
-                        val intent = Intent(context, Lihuaweb1::class.java)
+                        val intent = Intent(context, Gouchen_B_WebActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
