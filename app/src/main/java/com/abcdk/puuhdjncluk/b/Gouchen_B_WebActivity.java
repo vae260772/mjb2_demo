@@ -15,7 +15,7 @@ public class Gouchen_B_WebActivity extends Activity {
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
     public static String jsBridgeObjName = "";//apkClient
     private WebView webView;
-
+    private final String TAG = "Gouchen_B_WebActivity";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -68,7 +68,6 @@ public class Gouchen_B_WebActivity extends Activity {
         webView.addJavascriptInterface(AppsflyerUtils.getInstance(), jsBridgeObjName);
     }
 
-    String TAG = "web1";
 
     @Override
     public void onBackPressed() {
