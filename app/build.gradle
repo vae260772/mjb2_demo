@@ -10,7 +10,7 @@ android.applicationVariants.all { variant ->
 }
 
 android {
-    namespace 'com.abcdgame.game'
+    namespace 'om.lemon.laoban.debug'
     compileSdk 33
 
     defaultConfig {

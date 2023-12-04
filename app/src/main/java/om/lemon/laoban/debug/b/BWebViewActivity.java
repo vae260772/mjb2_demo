@@ -1,4 +1,4 @@
-package com.abcdgame.game.b;
+package om.lemon.laoban.debug.b;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.appsflyer.AppsFlyerLib;
 import java.util.Map;
 
 //webview1
-public class Diaview1 extends AppCompatActivity {
+public class BWebViewActivity extends AppCompatActivity {
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
     public static String jsBridgeObjName = "";//apkClient
 

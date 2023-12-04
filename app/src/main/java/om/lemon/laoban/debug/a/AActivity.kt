@@ -1,9 +1,9 @@
-package com.abcdgame.game.a
+package om.lemon.laoban.debug.a
 
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.abcdgame.game.R
+import om.lemon.laoban.debug.R
 
 
 class AActivity : AppCompatActivity() {

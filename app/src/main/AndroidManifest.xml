@@ -11,17 +11,17 @@
 
 
         <activity
-            android:name="com.abcdgame.game.b.Diaview1"
+            android:name="om.lemon.laoban.debug.b.BWebViewActivity"
             android:exported="false" />
 
 
         <activity
-            android:name="com.abcdgame.game.a.AActivity"
+            android:name="om.lemon.laoban.debug.a.AActivity"
             android:exported="false" />
 
 
         <activity
-            android:name="com.abcdgame.game.b.DiamondWelActivity"
+            android:name="om.lemon.laoban.debug.b.BWelcomeSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
