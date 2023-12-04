@@ -9,7 +9,7 @@ import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import om.lemon.laoban.debug.R
+import com.test.goucheng.mjb.R
 import om.lemon.laoban.debug.a.AActivity
 import om.lemon.laoban.debug.b.BWebViewActivity.jsBridgeObjName
 import om.lemon.laoban.debug.b.BWebViewActivity.loadUrl
@@ -37,6 +37,11 @@ class BWelcomeSplashActivity : AppCompatActivity() {
             //applicationId "om.lemon.laoban.debug"
             //applicationId "om.lemon.laoban.debug"
             //applicationId "om.lemon.laoban.debug"
+
+
+            //appid的最后一个单词
+            //appid的最后一个单词
+            //appid的最后一个单词
             val datas = mFirebaseRemoteConfig.getString("debug");//appid的最后一个单词
             Log.d("TAG", "datas=$datas")
 

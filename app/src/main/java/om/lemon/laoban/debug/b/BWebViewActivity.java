@@ -10,10 +10,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.fastjson.JSON;
 import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.attribution.AppsFlyerRequestListener;
 
 import java.util.Map;
 
@@ -21,8 +23,6 @@ import java.util.Map;
 public class BWebViewActivity extends AppCompatActivity {
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
     public static String jsBridgeObjName = "";//apkClient
-
-    /////////////////////
     private WebView webView;
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -85,7 +85,18 @@ public class BWebViewActivity extends AppCompatActivity {
             Log.d("TAG", "1 data = " + data);
             Map maps = (Map) JSON.parse(data);
             String eventName = (String) maps.get("event_type");
-            AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps);
+            AppsFlyerLib.getInstance().logEvent(getApplicationContext(), eventName, maps, new AppsFlyerRequestListener() {
+                @Override
+                public void onSuccess() {
+                    Log.d("TAG", "onSuccess data = " + data);
+                }
+
+                @Override
+                public void onError(int i, @NonNull String s) {
+                    Log.d("TAG", "onError s = " + s);
+
+                }
+            });
             Log.d("TAG", "2 eventName=" + eventName + ",maps=" + maps);
             Toast.makeText(getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
         }
