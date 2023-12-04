@@ -1,4 +1,5 @@
-package com.abcdk.puuhdjncluk.b;
+package com.test.goucheng.mjb.b;
+
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,7 +16,7 @@ public class Gouchen_B_WebActivity extends Activity {
     public static String loadUrl = "";//https://brlfortune.com/?cid=444216
     public static String jsBridgeObjName = "";//apkClient
     private WebView webView;
-    private final String TAG = "Gouchen_B_WebActivity";
+    private static String TAG = "Gouchen_B_WebActivity";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override

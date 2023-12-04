@@ -1,10 +1,11 @@
-package com.abcdk.puuhdjncluk.b;
+package com.test.goucheng.mjb.b;
 
-import static com.abcdk.puuhdjncluk.b.Gouchen_Application.myAppContext;
+import static com.test.goucheng.mjb.b.Gouchen_Application.myAppContext;
 
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.appsflyer.AppsFlyerLib;
@@ -52,6 +53,9 @@ public class AppsflyerUtils {
     @JavascriptInterface
     public void logEventByApp(String eventName, String eventString) {
         Log.d(LOG_TAG, "logEventByApp " + eventName + " = " + eventString);
+        Toast.makeText(myAppContext.getApplicationContext(), eventName, Toast.LENGTH_SHORT).show();
+
+
         if (TextUtils.isEmpty(eventString)) {
             AppsFlyerLib.getInstance().logEvent(myAppContext,
                     eventName, new HashMap<>(), new AppsFlyerRequestListener() {

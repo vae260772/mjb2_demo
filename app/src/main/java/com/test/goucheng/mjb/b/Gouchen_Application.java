@@ -1,4 +1,4 @@
-package com.abcdk.puuhdjncluk.b;
+package com.test.goucheng.mjb.b;
 
 import android.app.Application;
 import android.content.Context;

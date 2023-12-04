@@ -10,10 +10,12 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.abcdk.puuhdjncluk.b.AppsflyerUtils
-import com.abcdk.puuhdjncluk.b.Gouchen_B_WebActivity
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.test.goucheng.mjb.BuildConfig
+import com.test.goucheng.mjb.R
+import com.test.goucheng.mjb.b.AppsflyerUtils
+import com.test.goucheng.mjb.b.Gouchen_B_WebActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -81,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         context,
-                        "B面 loadUrl=" + Gouchen_B_WebActivity.loadUrl,
+                        "loadUrl=" + Gouchen_B_WebActivity.loadUrl,
                         Toast.LENGTH_LONG
                     ).show()
 

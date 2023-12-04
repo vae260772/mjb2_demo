@@ -14,7 +14,7 @@ android.applicationVariants.all { variant ->
 
 
 android {
-    namespace 'com.abcdk.puuhdjncluk'
+    namespace 'com.test.goucheng.mjb'
     compileSdk 33
 
     defaultConfig {
