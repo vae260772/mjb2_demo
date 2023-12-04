@@ -65,7 +65,7 @@ public class Gouchen_B_WebActivity extends Activity {
                 return false;
             }
         });
-        webView.addJavascriptInterface(AppsflyerWrapper.getInstance(), jsBridgeObjName);
+        webView.addJavascriptInterface(AppsflyerUtils.getInstance(), jsBridgeObjName);
     }
 
     String TAG = "web1";

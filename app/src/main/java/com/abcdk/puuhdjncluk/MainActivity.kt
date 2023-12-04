@@ -10,7 +10,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.abcdk.puuhdjncluk.b.AppsflyerWrapper
+import com.abcdk.puuhdjncluk.b.AppsflyerUtils
 import com.abcdk.puuhdjncluk.b.Gouchen_B_WebActivity
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     val array = firebase_datas.split(">>>")
 
                     //xxx>>>https://www.bbg1.bet/?com.test.goucheng.mjb>>>Appsflyer>>>pt>>>br>>>1
-                    AppsflyerWrapper.getInstance().initAppsflyer(array[0])
+                    AppsflyerUtils.getInstance().initAppsflyer(array[0])
 
                     Gouchen_B_WebActivity.loadUrl = array[1]
                     Gouchen_B_WebActivity.jsBridgeObjName = array[2]//Appsflyer

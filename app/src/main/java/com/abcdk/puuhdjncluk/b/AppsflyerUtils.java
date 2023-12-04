@@ -13,13 +13,13 @@ import com.appsflyer.attribution.AppsFlyerRequestListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AppsflyerWrapper {
-    private final String LOG_TAG = "AppsflyerWrapper";
-    private static AppsflyerWrapper _instance = null;
+public class AppsflyerUtils {
+    private final String LOG_TAG = "AppsflyerUtils";
+    private static AppsflyerUtils _instance = null;
 
-    public static AppsflyerWrapper getInstance() {
+    public static AppsflyerUtils getInstance() {
         if (_instance == null) {
-            _instance = new AppsflyerWrapper();
+            _instance = new AppsflyerUtils();
         }
         return _instance;
     }
@@ -32,7 +32,7 @@ public class AppsflyerWrapper {
             @Override
             public void onSuccess() {
                 Log.d(LOG_TAG, "Launch sent successfully, got 200 response code from server");
-                AppsflyerWrapper.getInstance().logEventByApp("af_startapp", null);
+                AppsflyerUtils.getInstance().logEventByApp("af_startapp", null);
             }
 
             @Override
