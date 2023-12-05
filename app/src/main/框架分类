@@ -1,0 +1,10 @@
+bee+lemon-
+1个webview，1个参数：
+af+apkClient+appsFlyerEvent(String data)+event_type
+登录上报示例：
+window.apkClient.appsFlyerEvent(
+'{
+"event_type":"af_login",
+"uid":"12345678"
+}'
+)
