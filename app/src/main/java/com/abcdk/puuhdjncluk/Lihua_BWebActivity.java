@@ -137,8 +137,6 @@ public class Lihua_BWebActivity extends Activity {
 
     @JavascriptInterface
     public void appsFlyerEvent(String data) {
-        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
-
         Map<String, Object> hashMap = new HashMap<String, Object>();
         JSONObject jsonData = JSON.parseObject(data);
         Iterator it = jsonData.entrySet().iterator();
@@ -167,6 +165,9 @@ public class Lihua_BWebActivity extends Activity {
                 }
             });
         }
+
+        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
+
     }
 
 }
